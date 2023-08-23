@@ -5,9 +5,45 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url(../assets/image-bg.png); */
+  /* background-image: linear-gradient(to left,skyblue, rgb(182, 245, 255)); */
+  background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.searchField {
+  width: 600px;
+}
+
+
+.navBar {
+  padding-left: 260px;
+  padding-right: 260px;
+}
+
+.weatherCard {
+  width: 600px;
+  position: absolute;
+  right: 284px;
+  top: 110px;
+}
+
+.weatherCardCont {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.weatherCardCont :nth-child(1) {  }
+.weatherCardCont :nth-child(2) { text-align: right; }
+.weatherCardCont :nth-child(3) {  }
+
+.middleOfScreen {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
 }
