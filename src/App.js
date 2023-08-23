@@ -3,8 +3,7 @@ import SearchField from "./components/SearchField.tsx";
 import NavBar from "./components/NavBar.tsx";
 import Filters from "./components/Filters.tsx";
 import Weather from "./components/weather/Weather.tsx";
-
-const API_KEY = process.env.REACT_APP_API_KEY;
+import NextDaysForecast from "./components/weather/NextDaysForecast.tsx";
 
 function App() {
   return (
@@ -12,6 +11,7 @@ function App() {
       <NavBar />
       <SearchField />
       <Weather />
+      <NextDaysForecast />
     </div>
   );
 }

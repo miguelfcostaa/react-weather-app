@@ -65,7 +65,7 @@ async function getWeatherInfo(): Promise<any> {
         params: {
             key: process.env.REACT_APP_API_KEY,
             q: 'London',
-            days: 2
+            days: 1
         }
     })
     console.log("RESPOSTA: ", response.data);
@@ -88,8 +88,7 @@ export default function ForecastWeather() {
 
     return(
         <>
-            <span className='middleOfScreen'>+</span>
-            <Card className='weatherCard'>
+            <Card className='weatherCard' sx={{ boxShadow: 5, borderRadius: 4}}>
                 <CardContent className='weatherCardCont'>
                     
                     <Typography sx={{ fontSize: 24 }} >
@@ -116,10 +115,10 @@ export default function ForecastWeather() {
 
 
             {/* <ul>
-                {forecastinfo?.forecast?.forecastday?.map((data: Forecastday) => (
+                {weatherInfo?.forecast?.forecastday?.map((data: Forecastday) => (
                     <li> {data.date} </li>
                 ))}
-                <li> {forecastinfo?.location.name} </li>
+                <li> {weatherInfo?.location.name} </li>
             </ul> */}
         
         </>

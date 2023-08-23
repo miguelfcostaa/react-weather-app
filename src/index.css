@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-image: url(../assets/image-bg.png); */
-  /* background-image: linear-gradient(to left,skyblue, rgb(182, 245, 255)); */
+  background-image: linear-gradient(to left,skyblue, rgb(182, 245, 255));
   background-size: cover;
 }
 
@@ -17,8 +17,27 @@ code {
 
 .searchField {
   width: 600px;
+  height: 40px;
+  border: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
+  padding: 2px;
+  padding-left: 10px;
+  margin-left: 4px;
 }
 
+.searchField:focus {
+  outline-color: white;
+}
+
+.searchBox {
+  align-items: center;
+  width: 620px;
+  height: 60px;
+  display: flex;
+  padding: 5px;
+  background-color: white;
+}
 
 .navBar {
   padding-left: 260px;
@@ -38,12 +57,32 @@ code {
   
 }
 
-.weatherCardCont :nth-child(1) {  }
-.weatherCardCont :nth-child(2) { text-align: right; }
-.weatherCardCont :nth-child(3) {  }
 
-.middleOfScreen {
-  position: fixed; /* or absolute */
-  top: 50%;
-  left: 50%;
+
+
+.forecastCard {
+  margin: 7px;
+  width: 181px;
+  height: 400px;
 }
+
+.forecastCardCont {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexForecastCards {
+  display: flex;
+  margin-left: 279px;
+  margin-top: 300px;
+}
+
+.forecastImages {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
