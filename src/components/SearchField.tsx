@@ -1,83 +1,62 @@
-import * as React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import axios from 'axios';
-import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
-
-type Forecastday = {
-    date: string;
-    day: {
-        maxtemp_c: number;
-        mintemp_c: number;
-        avgtemp_c: number;
-        daily_chance_of_rain: number;
-        condition: {
-            text: string;
-            icon: string;
-        }
-    }
-    uv: number;
-    hour: {
-        temp_c: number;
-        condition: {
-            text: string;
-            icon: string;
-        }
-        precip_mm: number;
-        humidity: number;
-        feelslike_c: number;
-        chance_of_rain: number;
-        uv: number;
-    }
-}
-
-type Data = {
-    current: {
-        temp_c: number;
-        condition: {
-            text: string;
-            icon: string;
-        }
-        wind_mph: number;
-        feelslike_c: number;
-        humidity: number;
-        uv: number;
-    }
-    forecast: {
-        forecastday: Forecastday[];
-    }
-    location: {
-        name: string;
-        region: string;
-        country: string;
-    }
-}
-
-async function getWeatherInfo(): Promise<any> {
-    const response = await axios.get<Data>('https://api.weatherapi.com/v1/forecast.json', {
-        params: {
-            key: process.env.REACT_APP_API_KEY,
-            q: document.getElementById('searchField'),
-            days: 7
-        }
-    })
-    return response.data;
-}
+import Weather from "./weather/Weather.tsx";
+import { Link } from 'react-router-dom';
 
 
-export default function searchField() {
-  return (
+export default function SearchField() {
+
+
+    const [ searchField, setSearchField ] = useState('');
+
+
+    const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
+        const searchField = e.target.value;
+        setSearchField(searchField);
+    };
+
+    const findByField = () => {
+        axios.get('https://api.weatherapi.com/v1/forecast.json', {
+            params: {
+                key: process.env.REACT_APP_API_KEY,
+                q: searchField,
+                days: 7
+            }
+        })
+        .then((response) => {
+            console.log("HEY", response.data)
+            return response.data;
+        })
+    }
+
+
+    return (
     <>
-        <Box sx={{marginTop: 5, marginLeft: 35, boxShadow: 5, borderRadius: 4 }} className='searchBox'>
-            <input id="seachField" className='searchField' placeholder='Search a Location...'/>
+        <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
             
-            <IconButton aria-label="search">
-                <SendIcon />
-            </IconButton>
-            
-        </Box>
+            <Box sx={{marginTop: 5, marginLeft: 35, boxShadow: 5, borderRadius: 4 }} className='searchBox'>
+                <input 
+                    id="field" 
+                    className='searchField' 
+                    placeholder='Search a Location...'
+                    value={searchField}
+                    onChange={onChangeSearch}
+                />
+                
+                <IconButton aria-label="search" onClick={findByField}>
+                    <Link to={'/search/' + searchField} >
+                        <SendIcon />
+                    </Link>
+                </IconButton>
+            </Box>
+            <Weather />
+
+        </div>
+        
+
     </>
     );
 }

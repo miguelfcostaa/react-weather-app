@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <NavBar />
       <SearchField />
-      <Weather />
       <NextDaysForecast />
     </div>
   );

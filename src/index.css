@@ -15,6 +15,7 @@ code {
     monospace;
 }
 
+
 .searchField {
   width: 600px;
   height: 40px;
@@ -31,10 +32,10 @@ code {
 }
 
 .searchBox {
+  display: flex;
   align-items: center;
   width: 620px;
   height: 60px;
-  display: flex;
   padding: 5px;
   background-color: white;
 }
@@ -44,37 +45,47 @@ code {
   padding-right: 260px;
 }
 
+
 .weatherCard {
   width: 600px;
-  position: absolute;
-  right: 284px;
-  top: 110px;
 }
 
 .weatherCardCont {
   display: flex;
-  flex-wrap: wrap;
-  
+  flex-flow: row wrap;
 }
 
-
-
-
 .forecastCard {
-  margin: 7px;
-  width: 181px;
+  margin: 2px;
+  width: 190px;
   height: 400px;
+}
+
+@keyframes transitionColor {
+  from {background-color: transparent;}
+  to {background-color: rgb(255, 255, 255);}
+}
+
+.forecastCard:hover, .forecastCard:focus-visible{
+  width: 220px;
+  height: 420px;
+  transform: translateY(-1.5rem);
+  animation-name: transitionColor;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  cursor: pointer;
 }
 
 .forecastCardCont {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
+
 }
 
 .flexForecastCards {
   display: flex;
   margin-left: 279px;
-  margin-top: 300px;
+  margin-top: 50px;
 }
 
 .forecastImages {
@@ -85,4 +96,23 @@ code {
   margin-right: auto;
 }
 
+
+.afterSearchCurrentDay {
+  width: 500px;
+
+}
+
+.afterSearchCurrentDayCont {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.hourForecast {
+  width: 770px;
+}
+
+.hourForecastCont {
+  display: flex;
+  flex-flow: row wrap;
+}
 

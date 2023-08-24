@@ -5,12 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
+import AfterSearch from "./components/AfterSearch";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/search/:field",
+    element: <AfterSearch />,
   },
 ]);
 

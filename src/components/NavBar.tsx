@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { grey } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 const primary = grey[50];
 
@@ -27,17 +27,29 @@ export default function NavBar() {
             <ThemeProvider theme={darkTheme}>
                 <AppBar position="static" className='navBar' color='primary'>
                     <Toolbar >
-                        <div className='.col-12 .col-md-8'>
-                            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                                Weather App
-                            </Typography> 
-                        </div>
+                        
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                          Weather App
+                        </Typography> 
+
                         {/* <BottomNavigationAction label="Home" icon={<CloudIcon  sx={{color: primary}} />} /> */}
-                        <div className='.col-6 .col-md-4'>
-                            <Button color="inherit" >Home</Button>
-                            <Button color="inherit" >Cities</Button> 
-                            <Button color="inherit" >History</Button>
-                        </div>
+                        
+                        <Button sx={{color: 'white'}}>
+                          <Link to={"/"}>
+                            Home
+                          </Link>
+                        </Button>
+                        <Button color="inherit">
+                          <Link to={"/cities"}>
+                            Cities
+                          </Link>
+                        </Button> 
+                        <Button color="inherit">
+                          <Link to={"/history"}>
+                            History
+                          </Link>
+                        </Button>
+                       
                     </Toolbar>
                 </AppBar>
             </ThemeProvider>
