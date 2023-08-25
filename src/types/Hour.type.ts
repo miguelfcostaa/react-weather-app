@@ -1,4 +1,5 @@
 export default interface Hour {
+    time: string;
     temp_c: number;
     condition: {
         text: string;

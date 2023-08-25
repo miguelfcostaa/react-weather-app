@@ -5,21 +5,12 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Data from '../../types/Data.type';
 import Forecastday from '../../types/Forecastday.type';
+import { Link } from 'react-router-dom';
 
 
-async function getWeatherInfo(): Promise<any> {
-    const response = await axios.get<Data>('https://api.weatherapi.com/v1/forecast.json', {
-        params: {
-            key: process.env.REACT_APP_API_KEY,
-            q: 'Madeira',
-            days: 7
-        }
-    })
-    console.log("7DAY - RESPOSTA: ", response.data);
-    return response.data;
-}
 
-export default function NextDaysForecast() {
+
+export default function NextDaysForecast(props: any) {
 
     const handleMoreInfo = () => {
         
@@ -34,7 +25,18 @@ export default function NextDaysForecast() {
         })();
     }, []);
 
-    console.log("7day - DEPOIS DE USAR NO USE-STATE", weatherInfo )
+    
+    async function getWeatherInfo(): Promise<any> {
+        const response = await axios.get<Data>('https://api.weatherapi.com/v1/forecast.json', {
+            params: {
+                key: process.env.REACT_APP_API_KEY,
+                q: props.city,
+                days: 7
+            }
+        })
+        return response.data;
+    }
+
 
     return(
         <>
@@ -42,25 +44,26 @@ export default function NextDaysForecast() {
             {weatherInfo?.forecast?.forecastday?.map((data: Forecastday) => 
                 <Card className='forecastCard' onClick={handleMoreInfo} sx={{ boxShadow: 5, borderRadius: 4, transition: 'transform 1s, width 1s, height 1s' }}>
                         <CardContent className='forecastCardCont'>
-
+                            <Link 
+                                to={"/search/" + props.city + "/" + data.date} 
+                                style={{ color: 'black', textDecoration: 'none'}}
+                            >
                             
-                            <Typography sx={{ fontSize: 18, width: 180, textAlign: 'center' }}>
+                            <Typography sx={{ fontSize: 18, width: 180, textAlign: 'center', paddingRight: 2 }}>
                                 {data.date}
                             </Typography>
 
-                            <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center', paddingTop: 5 }}>
+                            <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center', paddingTop: 5, paddingRight: 2  }}>
                                 {data.day.avgtemp_c} ºC
                             </Typography>
 
-                            <img src={data.day.condition.icon} width={110} height={110} className='forecastImages' />
+                            <img src={data.day.condition.icon} width={120} height={120} className='forecastImages' />
 
-                            
-
-                            <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center' }}>
+                            <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center', paddingRight: 2  }}>
                                 {data.day.condition.text}
                             </Typography>
 
-                        
+                            </Link>    
                         </CardContent>
                 </Card>
             )}

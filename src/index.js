@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import AfterSearch from "./components/AfterSearch";
+import "bootstrap/dist/css/bootstrap.css";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/search/:field",
+    path: "/search/:field/:date/:hour/:ndays",
+    element: <AfterSearch />,
+  },
+  {
+    path: "/search/:field/:date",
+    element: <AfterSearch />,
+  },
+  {
+    path: "/search/:field/:date/:hour",
+    element: <AfterSearch />,
+  },
+  {
+    path: "/search/:field/:date/:ndays",
     element: <AfterSearch />,
   },
 ]);

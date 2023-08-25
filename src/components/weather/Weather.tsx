@@ -9,20 +9,9 @@ import Data from '../../types/Data.type.ts'
 
 
 
-async function getWeatherInfo(): Promise<any> {
-    const response = await axios.get<Data>('https://api.weatherapi.com/v1/forecast.json', {
-        params: {
-            key: process.env.REACT_APP_API_KEY,
-            q: 'Madeira',
-            days: 1
-        }
-    })
-    console.log("RESPOSTA: ", response.data);
-    return response.data;
-}
 
 
-export default function ForecastWeather() {
+export default function ForecastWeather(props: any) {
 
     const [weatherInfo, setWeatherInfo] = useState<Data>();
 
@@ -33,14 +22,25 @@ export default function ForecastWeather() {
         })();
     }, []);
 
-    console.log("DEPOIS DE USAR NO USE-STATE", weatherInfo )
+
+    async function getWeatherInfo(): Promise<any> {
+        const response = await axios.get<Data>('https://api.weatherapi.com/v1/forecast.json', {
+            params: {
+                key: process.env.REACT_APP_API_KEY,
+                q:  props.city,
+                days: 1
+            }
+        })
+        return response.data;
+    }
+
 
     return(
         <>
             <Card className='weatherCard' sx={{ boxShadow: 5, borderRadius: 4, marginTop: 5, marginLeft: 16}}>
                 <CardContent className='weatherCardCont'>
                     
-                    <Typography sx={{ fontSize: 24, width: 350, padding: 3 }} >
+                    <Typography sx={{ fontSize: 24, width: 370, padding: 3 }} >
                         {weatherInfo?.location.name} 
                     </Typography>
 
@@ -48,7 +48,7 @@ export default function ForecastWeather() {
                         <img src={weatherInfo?.current.condition.icon} width={150} height={150} />
                     </Typography>
 
-                    <Typography sx={{ fontSize: 15, width: 300, padding: 3 }} >
+                    <Typography sx={{ fontSize: 24, width: 300, padding: 3, paddingTop: 2 }} >
                         {weatherInfo?.location.country} 
                     </Typography>
 
@@ -66,14 +66,6 @@ export default function ForecastWeather() {
                     
                 </CardActions>
             </Card>
-
-
-            {/* <ul>
-                {weatherInfo?.forecast?.forecastday?.map((data: Forecastday) => (
-                    <li> {data.date} </li>
-                ))}
-                <li> {weatherInfo?.location.name} </li>
-            </ul> */}
         
         </>
 

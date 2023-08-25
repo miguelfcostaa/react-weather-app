@@ -14,7 +14,7 @@ const darkTheme = createTheme({
     palette: {
       mode: 'light',
       primary: {
-        main: '#1E80C1',
+        main: '#FFFFFF',
       },
     },
   });
@@ -23,7 +23,7 @@ const darkTheme = createTheme({
 export default function NavBar() {
   return (
     <>
-        <div className='row'>
+        <div className=''>
             <ThemeProvider theme={darkTheme}>
                 <AppBar position="static" className='navBar' color='primary'>
                     <Toolbar >
@@ -34,18 +34,18 @@ export default function NavBar() {
 
                         {/* <BottomNavigationAction label="Home" icon={<CloudIcon  sx={{color: primary}} />} /> */}
                         
-                        <Button sx={{color: 'white'}}>
-                          <Link to={"/"}>
+                        <Button>
+                          <Link to={"/"} style={{ color: 'black', fontSize: 20, textTransform: 'capitalize', textDecoration: 'none', padding: 8 }}>
                             Home
                           </Link>
                         </Button>
-                        <Button color="inherit">
-                          <Link to={"/cities"}>
+                        <Button>
+                          <Link to={"/cities"} style={{ color: 'black', fontSize: 20, textTransform: 'capitalize', textDecoration: 'none', padding: 8 }}>
                             Cities
                           </Link>
                         </Button> 
-                        <Button color="inherit">
-                          <Link to={"/history"}>
+                        <Button>
+                          <Link to={"/history"} style={{ color: 'black', fontSize: 20, textTransform: 'capitalize', textDecoration: 'none', padding: 8 }}>
                             History
                           </Link>
                         </Button>
