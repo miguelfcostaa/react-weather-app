@@ -44,8 +44,8 @@ export default function OnlyDateWeather() {
         
         <h1 className='titleDate'>{params.date}</h1>
         <div className='row'>
-            <div className='col-5'>
-                <Card className='afterSearchCurrentDay' sx={{ boxShadow: 5, borderRadius: 2}}>
+            <div className='col-4'>
+                <Card className='afterSearchCurrentDayOnly' sx={{ boxShadow: 5, borderRadius: 2}}>
                     <CardContent className='afterSearchCurrentDayCont'>
 
                         <Typography>
@@ -83,7 +83,7 @@ export default function OnlyDateWeather() {
                     </CardContent>
                 </Card>
             </div>
-            <div className='col-7'>
+            <div className='col-8'>
                 <Card className="onlyHourForecast" sx={{ fontSize: 16, boxShadow: 5, borderRadius: 2}}>
                     <CardContent className='onlyHourForecastCont' >
                         {weatherInfo?.forecast?.forecastday[0].hour.map((data: Hour) => 

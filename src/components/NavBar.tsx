@@ -21,7 +21,7 @@ export default function NavBar() {
     <>
         <div className=''>
             <ThemeProvider theme={darkTheme}>
-                <AppBar position="static" className='navBar'>
+                <AppBar className='navBar'>
                     <Toolbar >
                         
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'white' }}>

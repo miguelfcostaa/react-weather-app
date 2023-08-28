@@ -51,7 +51,7 @@ export default function AfterSearch() {
             <NavBar />
 
             <div className='row'>
-                <div className='col-5'>
+                <div className='col-4'>
                     <Card className='afterSearchCurrentDay' sx={{ boxShadow: 5, borderRadius: 2}}>
                         <CardContent className='afterSearchCurrentDayCont'>
 
@@ -87,7 +87,7 @@ export default function AfterSearch() {
                         </CardContent>
                     </Card>
                 </div>
-                <div className='col-7'>
+                <div className='col-8'>
                 <Card className="hourForecast" sx={{ fontSize: 16, boxShadow: 5, borderRadius: 2 }}>
                     <CardContent className='hourForecastCont'>
                         {weatherInfo?.forecast?.forecastday[0].hour.map((data: Hour) => 
