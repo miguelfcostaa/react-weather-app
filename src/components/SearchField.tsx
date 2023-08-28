@@ -12,8 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import dayjs, { Dayjs } from 'dayjs';
-import { DateValidationError, PickerChangeHandlerContext } from '@mui/x-date-pickers';
-import { Card } from '@mui/material';
+
 
 
 export default function SearchField(props: any) {
@@ -26,12 +25,11 @@ export default function SearchField(props: any) {
         return `${year}-${month}-${date}`;
       }
 
-
     const [ searchField, setSearchField ] = useState(props?.city ?? "");
 
     const [ selectedDate, setSelectedDate ] = useState<Dayjs | null>(dayjs(getDate()));
 
-    const [ selectedDays, setSelectedDays ] = useState('');
+    const [ selectedDays, setSelectedDays ] = useState('0');
 
     const [ selectedHour, setSelectedHour ] = useState('');
 
@@ -61,41 +59,49 @@ export default function SearchField(props: any) {
             }
         })
         .then((response) => {
-            console.log(response.data);
+            localStorage.setItem("History", JSON.stringify(response.data.location.name))
             return response.data;
         })
     }
 
+    console.log("aaa",selectedDays);
 
     return (
     <>  
 
-        <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-            <Box sx={{marginTop: 5, marginLeft: 35, boxShadow: 5, borderRadius: 4 }} className='searchBox'>
-                <input 
-                    id="field" 
-                    className='searchField' 
-                    placeholder='Search a Location...'
-                    value={searchField}
-                    onChange={onChangeSearch}
-                />
-                
-                <IconButton aria-label="search" onClick={findByField}>
-                    <Link to={'/search/' + searchField + '/' + selectedDate + '/' + selectedHour + '/' + selectedDays }>
-                        <SendIcon />
-                    </Link>
-                </IconButton>
-            </Box>
-            
-            <Weather city="London" />
+        <div className='row' >
+            <div className='col-6'>
+                <Box sx={{ boxShadow: 5, borderRadius: 2 }} className='searchBox'>
+                    <input 
+                        id="field" 
+                        className='searchField' 
+                        placeholder='Search a Location...'
+                        value={searchField}
+                        onChange={onChangeSearch}
+                    />
+                    
+                    <IconButton aria-label="search" onClick={findByField} >
+                        <Link 
+                            to={ '/search/' + searchField + '/' + (selectedDays==="0" ? "7" : selectedDays) + '/' + (selectedHour ? selectedHour + "/" : "") + selectedDate }
+                            style={{color: 'black'}}
+                        >
+                            <SendIcon sx={{ verticalAlign: 'center'}}/>
+                        </Link>
+                    </IconButton>
+                </Box>
+            </div>
+            <div className='col-6'>
+                <Weather city="London" />
+            </div>
         </div>
 
-        <Box className="whitebox"  sx={{ boxShadow: 5, borderRadius: 4 }}>  </Box>
+        <Box className="whitebox"  sx={{ boxShadow: 5, borderRadius: 2 }}>  </Box>
 
         <Box className="datePicker" >
             <LocalizationProvider dateAdapter={AdapterDayjs} >
                 <DatePicker
                     format='YYYY-MM-DD'
+
                     value={selectedDate}
                     onChange={(newValue) => setSelectedDate(newValue)}
                     sx={{background: 'white', borderColor: '2'}}
@@ -110,7 +116,7 @@ export default function SearchField(props: any) {
                 onChange={onChangeDays}
                 displayEmpty
             > 
-                <MenuItem value="">
+                <MenuItem value={0}>
                     <em>Nº of days</em>
                 </MenuItem>
                 <MenuItem value={1}>One</MenuItem>

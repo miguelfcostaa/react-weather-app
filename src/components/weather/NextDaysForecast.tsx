@@ -23,7 +23,7 @@ export default function NextDaysForecast(props: any) {
             const weatherInfo = await getWeatherInfo();
             setWeatherInfo(weatherInfo);
         })();
-    }, []);
+    });
 
     
     async function getWeatherInfo(): Promise<any> {
@@ -42,7 +42,7 @@ export default function NextDaysForecast(props: any) {
         <>
             <div className='flexForecastCards'>
             {weatherInfo?.forecast?.forecastday?.map((data: Forecastday) => 
-                <Card className='forecastCard' onClick={handleMoreInfo} sx={{ boxShadow: 5, borderRadius: 4, transition: 'transform 1s, width 1s, height 1s' }}>
+                <Card className='forecastCard' onClick={handleMoreInfo} sx={{ boxShadow: 5, borderRadius: 2, transition: 'transform 1s, width 1s, height 1s' }}>
                         <CardContent className='forecastCardCont'>
                             <Link 
                                 to={"/search/" + props.city + "/" + data.date} 
@@ -57,7 +57,7 @@ export default function NextDaysForecast(props: any) {
                                 {data.day.avgtemp_c} ºC
                             </Typography>
 
-                            <img src={data.day.condition.icon} width={120} height={120} className='forecastImages' />
+                            <img alt='' src={data.day.condition.icon} width={120} height={120} className='forecastImages' />
 
                             <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center', paddingRight: 2  }}>
                                 {data.day.condition.text}

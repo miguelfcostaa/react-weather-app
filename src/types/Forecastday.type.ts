@@ -11,6 +11,8 @@ export default interface Forecastday {
             text: string;
             icon: string;
         }
+        maxwind_kph: number;
+        uv: number;
     }
     uv: number;
     hour: Hour[];

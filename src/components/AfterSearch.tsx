@@ -3,7 +3,7 @@ import axios from 'axios';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Data from '../types/Data.type';
 import Forecastday from '../types/Forecastday.type';
 import NavBar from './NavBar';
@@ -43,51 +43,53 @@ export default function AfterSearch() {
             const weatherInfo = await getWeatherInfo();
             setWeatherInfo(weatherInfo);
         })();
-    }, []);
+    });
 
 
     return(
         <>
             <NavBar />
 
-            <div style={{display: 'flex', flexFlow: 'row', flexWrap: 'wrap'}}>
-                <Card className='afterSearchCurrentDay' sx={{ boxShadow: 5, borderRadius: 4, marginTop: 3, marginLeft: 35}}>
-                    <CardContent className='afterSearchCurrentDayCont'>
+            <div className='row'>
+                <div className='col-5'>
+                    <Card className='afterSearchCurrentDay' sx={{ boxShadow: 5, borderRadius: 2}}>
+                        <CardContent className='afterSearchCurrentDayCont'>
 
-                        <Typography>
-                            <img src={weatherInfo?.current.condition.icon} width={180} height={180} style={{padding: 10}}/>
-                        </Typography>   
+                            <Typography>
+                                <img alt='' src={weatherInfo?.current.condition.icon} width={180} height={180} style={{padding: 10}}/>
+                            </Typography>   
 
-                        <Typography sx={{ fontSize: 34, width: 200, padding: 3, textAlign: 'right' }} >
-                            {weatherInfo?.current.temp_c}ºC
-                        </Typography>
+                            <Typography sx={{ fontSize: 34, width: 200, padding: 3, textAlign: 'center' }} >
+                                {weatherInfo?.current.temp_c}ºC
+                            </Typography>
 
-                        <Typography sx={{ fontSize: 26, width: 400, padding: 3, paddingTop: 1, paddingBottom: 4 }}>
-                            {weatherInfo?.current.condition.text}
-                        </Typography>
+                            <Typography sx={{ fontSize: 26, width: 400, padding: 3, paddingTop: 1, paddingBottom: 4 }}>
+                                {weatherInfo?.current.condition.text}
+                            </Typography>
 
-                        <Typography sx={{ fontSize: 24, width: 220, paddingLeft: 2, paddingBottom: 4 }}>
-                            <WaterDropIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.current.humidity} %
-                        </Typography>
+                            <Typography sx={{ fontSize: 24, width: 220, paddingLeft: 2, paddingBottom: 4 }}>
+                                <WaterDropIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.current.humidity} %
+                            </Typography>
 
-                        <Typography sx={{ fontSize: 24, width: 210, paddingLeft: 2 }} >
-                            <ThermostatIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.current.feelslike_c} ºC
-                        </Typography>
+                            <Typography sx={{ fontSize: 24, width: 210, paddingLeft: 2 }} >
+                                <ThermostatIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.current.feelslike_c} ºC
+                            </Typography>
 
-                        <Typography sx={{ fontSize: 24, width: 220, paddingLeft: 2 }} >
-                            <AirIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.current.wind_kph} mph
-                        </Typography>
+                            <Typography sx={{ fontSize: 24, width: 220, paddingLeft: 2 }} >
+                                <AirIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.current.wind_kph} mph
+                            </Typography>
 
-                        <Typography sx={{ fontSize: 24, width: 210, paddingLeft: 2 }} >
-                            <WbSunnyIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.current.uv} UV
-                        </Typography>
+                            <Typography sx={{ fontSize: 24, width: 210, paddingLeft: 2 }} >
+                                <WbSunnyIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.current.uv} UV
+                            </Typography>
 
-                        
-                    </CardContent>
-                </Card>
-                
-                <Card className="hourForecast" sx={{ fontSize: 16, boxShadow: 5, borderRadius: 4, marginTop: 3, marginLeft: 10}}>
-                    <CardContent className='container' style={{overflow: 'auto', maxHeight: 400, maxWidth: 770 }}>
+                            
+                        </CardContent>
+                    </Card>
+                </div>
+                <div className='col-7'>
+                <Card className="hourForecast" sx={{ fontSize: 16, boxShadow: 5, borderRadius: 2 }}>
+                    <CardContent className='hourForecastCont'>
                         {weatherInfo?.forecast?.forecastday[0].hour.map((data: Hour) => 
                             <div className='row'>
                             
@@ -96,7 +98,7 @@ export default function AfterSearch() {
                                 </Typography>
 
                                 <Typography className='col-1'>
-                                    <img src={data.condition.icon} width={30} height={30} />
+                                    <img alt='' src={data.condition.icon} width={30} height={30} />
                                 </Typography>   
 
                                 <Typography className='col-1'>
@@ -116,20 +118,24 @@ export default function AfterSearch() {
                                 </Typography>
 
                                 <Typography className='col-2' sx={{  paddingBottom: 2}} >
-                                    <WbSunnyIcon sx={{ verticalAlign: 'middle'}}/>  {data.uv}UV
+                                    <WbSunnyIcon sx={{ verticalAlign: 'middle'}}/>  {data.uv} UV
                                 </Typography>
-
+                                <hr></hr>
                             </div>   
                         )}     
                     </CardContent>
                 </Card>
+                </div>
             </div>
 
             <div className='flexForecastCards'>
             {weatherInfo?.forecast?.forecastday?.map((data: Forecastday) => 
-                <Card className='forecastCard' sx={{ boxShadow: 5, borderRadius: 4, transition: 'transform 1s, width 1s, height 1s' }}>
+                <Card className='forecastCard' sx={{ marginTop: 5, boxShadow: 5, borderRadius: 2, transition: 'transform 1s, width 1s, height 1s' }}>
                         <CardContent className='forecastCardCont'>
-
+                            <Link 
+                                to={"/search/" + params.field + "/" + data.date} 
+                                style={{ color: 'black', textDecoration: 'none'}}
+                            >
                             
                             <Typography sx={{ fontSize: 18, width: 180, textAlign: 'center' }}>
                                 {data.date}
@@ -139,13 +145,13 @@ export default function AfterSearch() {
                                 {data.day.avgtemp_c} ºC
                             </Typography>
 
-                            <img src={data.day.condition.icon} width={110} height={110} className='forecastImages' />
+                            <img alt='' src={data.day.condition.icon} width={110} height={110} className='forecastImages' />
 
                             <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center' }}>
                                 {data.day.condition.text}
                             </Typography>
 
-                        
+                            </Link>
                         </CardContent>
                 </Card>
             )}

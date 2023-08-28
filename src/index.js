@@ -7,6 +7,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import AfterSearch from "./components/AfterSearch";
 import "bootstrap/dist/css/bootstrap.css";
+import OnlyDateWeather from "./components/weather/OnlyDateWeather";
+import ViewHistory from "./components/ViewHistory";
+import ViewCities from "./components/ViewCities";
 
 const router = createBrowserRouter([
   {
@@ -15,20 +18,28 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/search/:field/:date/:hour/:ndays",
+    path: "/search/:field/:ndays/:hour/:date",
     element: <AfterSearch />,
   },
   {
     path: "/search/:field/:date",
+    element: <OnlyDateWeather />,
+  },
+  {
+    path: "/search/:field/:ndays/:date",
     element: <AfterSearch />,
   },
   {
-    path: "/search/:field/:date/:hour",
+    path: "/search/:field/7",
     element: <AfterSearch />,
   },
   {
-    path: "/search/:field/:date/:ndays",
-    element: <AfterSearch />,
+    path: "/history",
+    element: <ViewHistory />,
+  },
+  {
+    path: "/cities",
+    element: <ViewCities />,
   },
 ]);
 

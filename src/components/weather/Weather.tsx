@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Data from '../../types/Data.type.ts'
+import { Link } from 'react-router-dom';
 
 
 
@@ -20,7 +20,7 @@ export default function ForecastWeather(props: any) {
             const weatherInfo = await getWeatherInfo();
             setWeatherInfo(weatherInfo);
         })();
-    }, []);
+    });
 
 
     async function getWeatherInfo(): Promise<any> {
@@ -37,7 +37,7 @@ export default function ForecastWeather(props: any) {
 
     return(
         <>
-            <Card className='weatherCard' sx={{ boxShadow: 5, borderRadius: 4, marginTop: 5, marginLeft: 16}}>
+            <Card className='weatherCard' sx={{ boxShadow: 5, borderRadius: 2, }}>
                 <CardContent className='weatherCardCont'>
                     
                     <Typography sx={{ fontSize: 24, width: 370, padding: 3 }} >
@@ -45,7 +45,7 @@ export default function ForecastWeather(props: any) {
                     </Typography>
 
                     <Typography className='currentImage'>
-                        <img src={weatherInfo?.current.condition.icon} width={150} height={150} />
+                        <img alt='' src={weatherInfo?.current.condition.icon} width={150} height={150} />
                     </Typography>
 
                     <Typography sx={{ fontSize: 24, width: 300, padding: 3, paddingTop: 2 }} >
@@ -59,12 +59,11 @@ export default function ForecastWeather(props: any) {
                     <Typography sx={{ fontSize: 24, width: 400, paddingLeft: 3 }}>
                         {weatherInfo?.current.condition.text}
                     </Typography>
-                    <Button size="medium" variant="contained" className='btnMoreInfo' sx={{ borderRadius: 7, opacity: '60%' }}> More Info </Button>    
+                    <Link to={"/search/" + weatherInfo?.location.name + "/" + 7}>
+                        <Button size="medium" variant="contained" className='btnMoreInfo' sx={{ borderRadius: 3, opacity: '60%' }}> More Info </Button>    
+                    </Link>
 
                 </CardContent>
-                <CardActions>
-                    
-                </CardActions>
             </Card>
         
         </>
