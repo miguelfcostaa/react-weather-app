@@ -14,6 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import dayjs, { Dayjs } from 'dayjs';
 
 
+let location: any[] = []
+let country: any[] = []
 
 export default function SearchField(props: any) {
 
@@ -25,7 +27,7 @@ export default function SearchField(props: any) {
         return `${year}-${month}-${date}`;
       }
 
-    const [ searchField, setSearchField ] = useState(props?.city ?? "");
+    const [ searchField, setSearchField ] = useState("");
 
     const [ selectedDate, setSelectedDate ] = useState<Dayjs | null>(dayjs(getDate()));
 
@@ -46,7 +48,7 @@ export default function SearchField(props: any) {
         setSelectedHour(event.target.value);
     };
 
-    
+
 
     const findByField = () => {
         axios.get('https://api.weatherapi.com/v1/forecast.json', {
@@ -59,12 +61,15 @@ export default function SearchField(props: any) {
             }
         })
         .then((response) => {
-            localStorage.setItem("History", JSON.stringify(response.data.location.name))
+            location.push(response.data.location.name) 
+            localStorage.setItem("location", JSON.stringify(location))
+
+            country.push(response.data.location.country) 
+            localStorage.setItem("country", JSON.stringify(country))
             return response.data;
         })
     }
 
-    console.log("aaa",selectedDays);
 
     return (
     <>  
@@ -91,7 +96,7 @@ export default function SearchField(props: any) {
                 </Box>
             </div>
             <div className='col-6'>
-                <Weather city="London" />
+                <Weather coords="32.6789267,-17.0599522" />
             </div>
         </div>
 

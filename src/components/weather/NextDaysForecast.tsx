@@ -48,20 +48,19 @@ export default function NextDaysForecast(props: any) {
                                 to={"/search/" + props.city + "/" + data.date} 
                                 style={{ color: 'black', textDecoration: 'none'}}
                             >
-                            
-                            <Typography sx={{ fontSize: 18, width: 180, textAlign: 'center', paddingRight: 2 }}>
-                                {data.date}
-                            </Typography>
+                                <Typography sx={{ fontSize: 18, width: 180, textAlign: 'center', paddingRight: 2 }}>
+                                    {data.date}
+                                </Typography>
 
-                            <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center', paddingTop: 5, paddingRight: 2  }}>
-                                {data.day.avgtemp_c} ºC
-                            </Typography>
+                                <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center', paddingTop: 5, paddingRight: 2  }}>
+                                    {data.day.avgtemp_c} ºC
+                                </Typography>
 
-                            <img alt='' src={data.day.condition.icon} width={120} height={120} className='forecastImages' />
+                                <img alt='' src={data.day.condition.icon} width={120} height={120} className='forecastImages' />
 
-                            <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center', paddingRight: 2  }}>
-                                {data.day.condition.text}
-                            </Typography>
+                                <Typography sx={{ fontSize: 24, width: 180, textAlign: 'center', paddingRight: 2  }}>
+                                    {data.day.condition.text}
+                                </Typography>
 
                             </Link>    
                         </CardContent>

@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <SearchField city="London" />
-      <NextDaysForecast city="London" />
+      <SearchField city="32.6789267,-17.0599522" />
+      <NextDaysForecast city="32.6789267,-17.0599522" />
     </div>
   );
 }

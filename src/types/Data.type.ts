@@ -19,5 +19,6 @@ export default interface Data {
         name: string;
         region: string;
         country: string;
+        localtime: string;
     }
 }

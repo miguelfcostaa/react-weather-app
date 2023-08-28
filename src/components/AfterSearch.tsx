@@ -17,10 +17,10 @@ export default function AfterSearch() {
 
     let params = useParams();
 
-    console.log(params.field);
-    console.log(params.date);
-    console.log(params.hour);
-    console.log(params.ndays);
+    // console.log(params.field);
+    // console.log(params.date);
+    // console.log(params.hour);
+    // console.log(params.ndays);
 
 
     const [weatherInfo, setWeatherInfo] = useState<Data>();
@@ -59,7 +59,8 @@ export default function AfterSearch() {
                                 <img alt='' src={weatherInfo?.current.condition.icon} width={180} height={180} style={{padding: 10}}/>
                             </Typography>   
 
-                            <Typography sx={{ fontSize: 34, width: 200, padding: 3, textAlign: 'center' }} >
+                            <Typography className='locationAndTemp' sx={{ fontSize: 34, width: 250, padding: 3 }} >
+                                <p style={{ fontWeight: 'bold'}}> {weatherInfo?.location.name}</p>
                                 {weatherInfo?.current.temp_c}ºC
                             </Typography>
 
@@ -67,7 +68,7 @@ export default function AfterSearch() {
                                 {weatherInfo?.current.condition.text}
                             </Typography>
 
-                            <Typography sx={{ fontSize: 24, width: 220, paddingLeft: 2, paddingBottom: 4 }}>
+                            <Typography className="humidity" sx={{ fontSize: 24, width: 220, paddingLeft: 2}}>
                                 <WaterDropIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.current.humidity} %
                             </Typography>
 

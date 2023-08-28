@@ -9,16 +9,17 @@ import { Link } from 'react-router-dom';
 
 
 
-
-
 export default function ForecastWeather(props: any) {
 
-    const [weatherInfo, setWeatherInfo] = useState<Data>();
+        
+    const [ weatherInfo, setWeatherInfo ] = useState<Data>();
+
 
     useEffect(() => {
         (async () => {
             const weatherInfo = await getWeatherInfo();
             setWeatherInfo(weatherInfo);
+                  
         })();
     });
 
@@ -27,7 +28,7 @@ export default function ForecastWeather(props: any) {
         const response = await axios.get<Data>('https://api.weatherapi.com/v1/forecast.json', {
             params: {
                 key: process.env.REACT_APP_API_KEY,
-                q:  props.city,
+                q: props.coords,
                 days: 1
             }
         })
@@ -40,8 +41,9 @@ export default function ForecastWeather(props: any) {
             <Card className='weatherCard' sx={{ boxShadow: 5, borderRadius: 2, }}>
                 <CardContent className='weatherCardCont'>
                     
-                    <Typography sx={{ fontSize: 24, width: 370, padding: 3 }} >
+                    <Typography sx={{ fontSize: 40, fontWeight: 'bold', width: 370, padding: 3 }} >
                         {weatherInfo?.location.name} 
+                        <p style={{fontSize: 18, fontWeight: 'normal'}}>{weatherInfo?.location.country}</p>
                     </Typography>
 
                     <Typography className='currentImage'>
@@ -49,7 +51,7 @@ export default function ForecastWeather(props: any) {
                     </Typography>
 
                     <Typography sx={{ fontSize: 24, width: 300, padding: 3, paddingTop: 2 }} >
-                        {weatherInfo?.location.country} 
+                        {weatherInfo?.location.localtime} 
                     </Typography>
 
                     <Typography sx={{ fontSize: 24, width: 550, paddingLeft: 3 }} >
