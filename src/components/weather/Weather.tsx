@@ -15,6 +15,7 @@ export default function ForecastWeather(props: any) {
     const [ weatherInfo, setWeatherInfo ] = useState<Data>();
 
 
+
     useEffect(() => {
         (async () => {
             const weatherInfo = await getWeatherInfo();
@@ -49,20 +50,22 @@ export default function ForecastWeather(props: any) {
                     <Typography className='currentImage'>
                         <img alt='' src={weatherInfo?.current.condition.icon} width={150} height={150} />
                     </Typography>
-
-                    <Typography sx={{ fontSize: 24, width: 300, padding: 3, paddingTop: 2 }} >
-                        {weatherInfo?.location.localtime} 
-                    </Typography>
-
-                    <Typography sx={{ fontSize: 24, width: 550, paddingLeft: 3 }} >
+                    <Typography sx={{ fontSize: 24, width: 300, paddingLeft: 3 }} >
                         {weatherInfo?.current.temp_c}ºC
                     </Typography>
 
                     <Typography sx={{ fontSize: 24, width: 400, paddingLeft: 3 }}>
                         {weatherInfo?.current.condition.text}
                     </Typography>
+
+
+                    <Typography sx={{ fontSize: 20, width: 400, padding: 3, paddingTop: 2 }} >
+                        {weatherInfo?.location.localtime} 
+                    </Typography>
+
+                    
                     <Link to={"/search/" + weatherInfo?.location.name + "/" + 7}>
-                        <Button size="medium" variant="contained" className='btnMoreInfo' sx={{ borderRadius: 3, opacity: '60%' }}> More Info </Button>    
+                        <Button size="medium" variant="contained" className='btnMoreInfo' sx={{marginTop: 2, borderRadius: 3, opacity: '60%' }}> More Info </Button>    
                     </Link>
 
                 </CardContent>

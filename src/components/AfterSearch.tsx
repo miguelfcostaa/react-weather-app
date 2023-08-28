@@ -50,7 +50,7 @@ export default function AfterSearch() {
         <>
             <NavBar />
 
-            <div className='row'>
+            <div className='row' style={{ marginRight: 0 }}>
                 <div className='col-4'>
                     <Card className='afterSearchCurrentDay' sx={{ boxShadow: 5, borderRadius: 2}}>
                         <CardContent className='afterSearchCurrentDayCont'>

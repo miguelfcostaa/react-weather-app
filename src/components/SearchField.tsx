@@ -74,7 +74,7 @@ export default function SearchField(props: any) {
     return (
     <>  
 
-        <div className='row' >
+        <div className='row' style={{ marginRight: 0 }} >
             <div className='col-6'>
                 <Box sx={{ boxShadow: 5, borderRadius: 2 }} className='searchBox'>
                     <input 

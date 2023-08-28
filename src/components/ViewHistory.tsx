@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
@@ -8,10 +8,13 @@ let country: any[] = []
 
 export default function ViewHistory() {
 
+    const [ location, setLocation ] = useState<any[]>([]);
+    const [ country, setCountry ] = useState<any[]>([]);
+
     useEffect(() => {
         (async () => {
-            location = JSON.parse(localStorage.getItem("location") || '{}');
-            country = JSON.parse(localStorage.getItem("country") || '{}');
+            setLocation(JSON.parse(localStorage.getItem("location") || '{}'));
+            setCountry(JSON.parse(localStorage.getItem("country") || '{}'));
             console.log(country)
             console.log(location)
         })();

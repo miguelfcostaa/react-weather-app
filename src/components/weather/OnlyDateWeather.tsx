@@ -43,7 +43,7 @@ export default function OnlyDateWeather() {
         <NavBar />
         
         <h1 className='titleDate'>{params.date}</h1>
-        <div className='row'>
+        <div className='row' style={{ marginRight: 0 }}>
             <div className='col-4'>
                 <Card className='afterSearchCurrentDayOnly' sx={{ boxShadow: 5, borderRadius: 2}}>
                     <CardContent className='afterSearchCurrentDayCont'>
