@@ -3,8 +3,6 @@ import Box from '@mui/material/Box';
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
 
-let location: any[] = []
-let country: any[] = []
 
 export default function ViewHistory() {
 
@@ -18,7 +16,7 @@ export default function ViewHistory() {
             console.log(country)
             console.log(location)
         })();
-    }, [])  
+    })  
     
     const renderHistory = () => {
         

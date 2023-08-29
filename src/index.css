@@ -34,10 +34,6 @@ code {
     margin-left: 4px;
   }
 
-  .searchField:focus {
-    outline-color: white;
-  }
-
   .searchBox {
     display: flex;
     align-items: center;
@@ -58,7 +54,8 @@ code {
   .weatherCard {
     width: 600px;
     margin-top: 100px;
-    margin-left: 60px;
+    margin-left: 66px;
+    margin-bottom: 45px;
   }
 
   .weatherCardCont {
@@ -140,13 +137,13 @@ code {
 
   .afterSearchCurrentDayOnly {
     width: 500px;
-    margin-top: 40px;
+    margin-top: 120px;
     margin-left: 284px;
   }
 
   .onlyHourForecast {
     width: 770px;
-    margin-top: 40px;
+    margin-top: 120px;
     margin-left: 215px;
   }
 
@@ -160,7 +157,7 @@ code {
     width: 620px;
     height: 95px;
     top: 170px;
-    left: 280px;
+    left: 284px;
     background: white;
     border-radius: 10px;
   }
@@ -173,7 +170,7 @@ code {
 
   .selectDays {
     position: absolute;
-    top: -250px;
+    top: 30px;
     left: 580px;
     margin: 1px;
     width: 130px;
@@ -182,7 +179,7 @@ code {
 
   .selectHour {
     position: absolute;
-    top: -250px;
+    top: 30px;
     left: 610px;
     width: 140px;
     min-width: 200px;

@@ -30,7 +30,7 @@ export default function AfterSearch() {
             params: {
                 key: process.env.REACT_APP_API_KEY,
                 q: params.field,
-                days: params.ndays ?? 7,
+                days: params.ndays,
                 dt: params.date,
                 hour: params.hour ?? ''
             }

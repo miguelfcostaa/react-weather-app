@@ -29,7 +29,7 @@ export default function ForecastWeather(props: any) {
         const response = await axios.get<Data>('https://api.weatherapi.com/v1/forecast.json', {
             params: {
                 key: process.env.REACT_APP_API_KEY,
-                q: props.coords,
+                q: props.city,
                 days: 1
             }
         })
@@ -64,7 +64,7 @@ export default function ForecastWeather(props: any) {
                     </Typography>
 
                     
-                    <Link to={"/search/" + weatherInfo?.location.name + "/" + 7}>
+                    <Link to={"/search/" + weatherInfo?.location.name + "/days/" + 7}>
                         <Button size="medium" variant="contained" className='btnMoreInfo' sx={{marginTop: 2, borderRadius: 3, opacity: '60%' }}> More Info </Button>    
                     </Link>
 

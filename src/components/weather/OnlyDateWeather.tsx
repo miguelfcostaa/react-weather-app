@@ -16,6 +16,7 @@ export default function OnlyDateWeather() {
 
     let params = useParams();
 
+
     const [weatherInfo, setWeatherInfo] = useState<Data>();
 
     async function getWeatherInfo(): Promise<any> {
@@ -23,8 +24,9 @@ export default function OnlyDateWeather() {
             params: {
                 key: process.env.REACT_APP_API_KEY,
                 q: params.field,
-                days: 1,
+                days: params.ndays ?? '1',
                 dt: params.date,
+                hour: params.hour ?? '',
             }
         })
         return response.data;
@@ -42,17 +44,17 @@ export default function OnlyDateWeather() {
     <>
         <NavBar />
         
-        <h1 className='titleDate'>{params.date}</h1>
         <div className='row' style={{ marginRight: 0 }}>
             <div className='col-4'>
                 <Card className='afterSearchCurrentDayOnly' sx={{ boxShadow: 5, borderRadius: 2}}>
                     <CardContent className='afterSearchCurrentDayCont'>
 
                         <Typography>
-                            <img alt='' src={weatherInfo?.forecast.forecastday[0].day.condition.icon} width={180} height={180} style={{padding: 10}}/>
+                            <img alt='' src={weatherInfo?.forecast.forecastday[0].day.condition.icon} width={180} height={180} style={{}}/>
                         </Typography>   
 
                         <Typography sx={{ fontSize: 34, width: 270, padding: 3, textAlign: 'right' }} >
+                            <p style={{fontWeight: 'bold'}}> {weatherInfo?.location.name} </p> 
                             {weatherInfo?.forecast.forecastday[0].day.maxtemp_c}ºC 
                             <Typography sx={{ fontSize: 28 }}>
                                 {weatherInfo?.forecast.forecastday[0].day.mintemp_c}ºC

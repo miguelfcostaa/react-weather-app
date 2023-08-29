@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/search/:field/:ndays/:date/:hour",
+    path: "/search/:field/:date/:ndays/:hour",
     element: <AfterSearch />,
   },
   {
@@ -26,7 +26,19 @@ const router = createBrowserRouter([
     element: <OnlyDateWeather />,
   },
   {
-    path: "/search/:field/:ndays/:date",
+    path: "/search/:field/:date/hour/:hour",
+    element: <OnlyDateWeather />,
+  },
+  {
+    path: "/search/:field/days/:ndays",
+    element: <AfterSearch />,
+  },
+  {
+    path: "/search/:field/days/:ndays/hour/:hour",
+    element: <AfterSearch />,
+  },
+  {
+    path: "/search/:field/:date/:ndays",
     element: <AfterSearch />,
   },
   {

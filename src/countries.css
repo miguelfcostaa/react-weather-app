@@ -1,5 +1,9 @@
 @media only screen and (min-width: 800px) {
 
+    @keyframes transitionColor {
+        from {background-color: transparent;}
+        to {background-color: white}
+    }
 
     .europeMap {
         background-image: url(../assets/Europe_location.png);
@@ -9,96 +13,11 @@
         margin-left: 354px;
         background-repeat: no-repeat;
     }
-    
-    .portugal {
-        background-repeat: no-repeat;
-        background-image: url(../assets/portugal.png);
-        position: absolute;
-        bottom: 63px;
-        left: 639px;
-        width: 3%;
-        height: 10%;
-        opacity: 0%;
-    }
-    
-    .ptInfo{
+
+    .infoBox {
         background: white;
         border-radius: 10px;
-        padding: 15px;
-        position: absolute;
-        bottom: 100px;
-        left: 449px;
-        opacity: 0;
-    }
-
-    .portugal:hover + .ptInfo{
-        opacity: 70%;
-    }
-    
-    .spain{
-        background-repeat: no-repeat;
-        background-image: url(../assets/spain.png);
-        position: absolute;
-        bottom: 80px;
-        left: 679px;
-        width: 5%;
-        height: 10%;
-        opacity: 0%;
-    }
-    
-    .spainInfo {
-        background: white;
-        border-radius: 10px;
-        padding: 15px;
-        position: absolute;
-        bottom: 170px;
-        left: 589px;
-        opacity: 0;
-    }
-    
-    .spain:hover + .spainInfo{
-        opacity: 70%;
-    }
-
-    .france {
-        background-repeat: no-repeat;
-        background-image: url(../assets/spain.png);
-        position: absolute;
-        bottom: 180px;
-        left: 749px;
-        width: 5%;
-        height: 12%;
-        opacity: 0%;
-    }
-
-    .franceInfo {
-        background: white;
-        border-radius: 10px;
-        padding: 15px;
-        position: absolute;
-        bottom: 200px;
-        left: 609px;
-        opacity: 0;
-    }
-    
-    .france:hover + .franceInfo{
-        opacity: 70%;
-    }
-
-    .england {
-        background-repeat: no-repeat;
-        background-image: url(../assets/spain.png);
-        position: absolute;
-        bottom: 310px;
-        left: 650px;
-        width: 7%;
-        height: 12%;
-        opacity: 0;
-    }
-
-    .englandInfo {
-        background: white;
-        border-radius: 10px;
+        max-width: 220px;
         padding: 15px;
         position: absolute;
         bottom: 320px;
@@ -106,9 +25,300 @@
         opacity: 0;
     }
     
-    .england:hover + .englandInfo{
+    .portugal {
+        background-repeat: no-repeat;
+        background-image: url(../assets/portugal-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 103px;
+        left: 649px;
+        width: 40px;
+        height: 25px;
+    }
+
+    .portugal:hover .portugal:focus-visible + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
         opacity: 70%;
     }
 
+    .portugal:hover {
+        cursor: pointer
+    }
+    
+    .spain{
+        background-repeat: no-repeat;
+        background-image: url(../assets/spain-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 120px;
+        left: 709px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .spain:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .spain:hover {
+        cursor: pointer
+    }
+
+    .france {
+        background-repeat: no-repeat;
+        background-image: url(../assets/france-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 220px;
+        left: 779px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .france:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .france:hover {
+        cursor: pointer
+    }
+
+    .england {
+        background-repeat: no-repeat;
+        background-image: url(../assets/england-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 330px;
+        left: 720px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .england:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .england:hover {
+        cursor: pointer
+    }
+
+
+    .germany {
+        background-repeat: no-repeat;
+        background-image: url(../assets/germany-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 310px;
+        left: 870px;
+        width: 40px;
+        height: 25px;
+    }
+
+    .germany:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .germany:hover {
+        cursor: pointer
+    }
+
+    .italy {
+        background-repeat: no-repeat;
+        background-image: url(../assets/italy-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 150px;
+        left: 900px;
+        width: 40px;
+        height: 25px;
+    }
+
+    .italy:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .italy:hover {
+        cursor: pointer
+    }
+
+    .norway {
+        background-repeat: no-repeat;
+        background-image: url(../assets/norway-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 530px;
+        left: 860px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .norway:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .norway:hover {
+        cursor: pointer
+    }
+
+
 }
 
+
+
+@media only screen and (max-width: 800px) {
+
+    @keyframes transitionColor {
+        from {background-color: transparent;}
+        to {background-color: white}
+    }
+
+    .europeMap {
+        background-image: url(../assets/Europe_location.png);
+        background-size: cover;
+        height: 700px;
+        width: 700px;
+        margin: 30px;
+        margin-top: 100px;
+        background-repeat: no-repeat;
+    }
+
+    .infoBox {
+        border-radius: 10px;
+        padding: 15px;
+        position: absolute;
+        bottom: 240px;
+        left: 43px;
+        opacity: 0;
+    }
+
+    .portugal {
+        background-repeat: no-repeat;
+        background-image: url(../assets/portugal-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 183px;
+        left: 239px;
+        width: 40px;
+        height: 25px;
+    }
+
+    .portugal:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .portugal:hover {
+        cursor: pointer
+    }
+
+    .spain{
+        background-repeat: no-repeat;
+        background-image: url(../assets/spain-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 200px;
+        left: 299px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .spain:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .spain:hover {
+        cursor: pointer
+    }
+
+    .france {
+        background-repeat: no-repeat;
+        background-image: url(../assets/france-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 280px;
+        left: 359px;
+        width: 40px;
+        height: 25px;
+    }
+
+    .france:hover + .infoBox{
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .france:hover {
+        cursor: pointer
+    }
+
+    .england {
+        background-repeat: no-repeat;
+        background-image: url(../assets/england-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 360px;
+        left: 310px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .england:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .england:hover {
+        cursor: pointer
+    }
+
+    .germany {
+        background-repeat: no-repeat;
+        background-image: url(../assets/germany-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 345px;
+        left: 430px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .germany:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .germany:hover {
+        cursor: pointer
+    }
+
+}
