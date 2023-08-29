@@ -19,6 +19,9 @@ let country: any[] = []
 
 export default function SearchField(props: any) {
 
+    const today = new Date();
+    const month = today.getMonth() + 1;
+
     function getDate() {
         const today = new Date();
         const month = today.getMonth() + 1;
@@ -49,14 +52,13 @@ export default function SearchField(props: any) {
     };
 
 
-
     const findByField = () => {
         axios.get('https://api.weatherapi.com/v1/forecast.json', {
             params: {
                 key: process.env.REACT_APP_API_KEY,
                 q: searchField,
                 days: selectedDays,
-                dt: selectedDate,
+                dt: selectedDate?.get('y') + "-" + month + "-" + selectedDate?.get('D'),
                 hour: selectedHour
             }
         })
@@ -69,7 +71,6 @@ export default function SearchField(props: any) {
             return response.data;
         })
     }
-
 
     return (
     <>  
@@ -87,7 +88,7 @@ export default function SearchField(props: any) {
                     
                     <IconButton aria-label="search" onClick={findByField} >
                         <Link 
-                            to={ '/search/' + searchField + '/' + (selectedDays==="0" ? "7" : selectedDays) + '/' + (selectedHour ? selectedHour + "/" : "") + selectedDate }
+                            to={ '/search/' + searchField + '/' + (selectedDays==="0" ? "7" : selectedDays) + '/' + (selectedDate?.get('y') + "-" + month +"-" + selectedDate?.get('D')) + (selectedHour ? "/" + selectedHour : "") }
                             style={{color: 'black'}}
                         >
                             <SendIcon sx={{ verticalAlign: 'center'}}/>

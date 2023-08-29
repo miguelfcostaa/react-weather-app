@@ -26,8 +26,8 @@
         border-radius: 10px;
         padding: 15px;
         position: absolute;
-        bottom: 120px;
-        left: 509px;
+        bottom: 100px;
+        left: 449px;
         opacity: 0;
     }
 
@@ -82,6 +82,31 @@
     }
     
     .france:hover + .franceInfo{
+        opacity: 70%;
+    }
+
+    .england {
+        background-repeat: no-repeat;
+        background-image: url(../assets/spain.png);
+        position: absolute;
+        bottom: 310px;
+        left: 650px;
+        width: 7%;
+        height: 12%;
+        opacity: 0;
+    }
+
+    .englandInfo {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        position: absolute;
+        bottom: 320px;
+        left: 409px;
+        opacity: 0;
+    }
+    
+    .england:hover + .englandInfo{
         opacity: 70%;
     }
 

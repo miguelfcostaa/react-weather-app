@@ -73,32 +73,66 @@ export default function ViewCities() {
         return response.data;
     }
 
+    const [ englandInfo, setEnglandInfo ] = useState<Data>();
+
+    useEffect(() => {
+        (async () => {
+            const englandInfo = await getEnglandInfo();
+            setEnglandInfo(englandInfo);
+                  
+        })();
+    });
+
+
+    async function getEnglandInfo(): Promise<any> {
+        const response = await axios.get<Data>('https://api.weatherapi.com/v1/forecast.json', {
+            params: {
+                key: process.env.REACT_APP_API_KEY,
+                q: "England",
+                days: 1
+            }
+        })
+        return response.data;
+    }
+
 
     return (
         <>
             <NavBar />
-            <img className='europeMap'></img>
+            <img alt='' className='europeMap'></img>
             <div>
-                <img className='portugal'></img>
+                <img alt='' className='portugal'></img>
                 <span className='ptInfo'>
                     <p>Country: {portugalInfo?.location.country} </p>
-                    <p>Temperature: {portugalInfo?.current.temp_c}ºC</p>
+                    <p>Condition: {portugalInfo?.current.condition.text} </p>
+                    Temperature: {portugalInfo?.current.temp_c}ºC
                 
                 </span>
             </div>
             <div>
-                <img className='spain'></img>
+                <img alt='' className='spain'></img>
                 <span className='spainInfo'>
                     <p>Country: {spainInfo?.location.country} </p>
-                    <p>Temperature: {spainInfo?.current.temp_c}ºC</p>
+                    <p>Condition: {spainInfo?.current.condition.text} </p>
+                    Temperature: {spainInfo?.current.temp_c}ºC
                 
                 </span>
             </div>
             <div>
-                <img className='france'></img>
+                <img alt='' className='france'></img>
                 <span className='franceInfo'>
                     <p>Country: {franceInfo?.location.country} </p>
-                    <p>Temperature: {franceInfo?.current.temp_c}ºC</p>
+                    <p>Condition: {franceInfo?.current.condition.text} </p>
+                    Temperature: {franceInfo?.current.temp_c}ºC
+                
+                </span>
+            </div>
+            <div>
+                <img alt='' className='england'></img>
+                <span className='englandInfo'>
+                    <p>Country: {englandInfo?.location.country} </p>
+                    <p>Condition: {englandInfo?.current.condition.text} </p>
+                    Temperature: {englandInfo?.current.temp_c}ºC
                 
                 </span>
             </div>

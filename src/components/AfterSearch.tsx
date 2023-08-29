@@ -17,10 +17,10 @@ export default function AfterSearch() {
 
     let params = useParams();
 
-    // console.log(params.field);
-    // console.log(params.date);
-    // console.log(params.hour);
-    // console.log(params.ndays);
+    console.log("field",params.field);
+    console.log("date",params.date);
+    console.log("hour",params.hour);
+    console.log("days",params.ndays);
 
 
     const [weatherInfo, setWeatherInfo] = useState<Data>();
@@ -31,7 +31,7 @@ export default function AfterSearch() {
                 key: process.env.REACT_APP_API_KEY,
                 q: params.field,
                 days: params.ndays ?? 7,
-                dt: params.date ?? '',
+                dt: params.date,
                 hour: params.hour ?? ''
             }
         })
