@@ -14,22 +14,19 @@ import { Dayjs } from 'dayjs';
 import { Button, Input } from '@mui/joy';
 
 
-let location: any[] = []
-let country: any[] = []
-
 export default function SearchField(props: any) {
-
-    const today = new Date();
-    const month = today.getMonth() + 1;
 
 
     const [ searchField, setSearchField ] = useState(props.city ?? "");
 
-    const [ selectedDate, setSelectedDate ] = useState<Dayjs | null>();
+    const [ selectedDate, setSelectedDate ] = useState<Dayjs | null | any>();
 
     const [ selectedDays, setSelectedDays ] = useState('0');
 
     const [ selectedHour, setSelectedHour ] = useState('');
+
+    const month = selectedDate?.get('M') + 1;
+
 
     const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
         const searchField = e.target.value;
@@ -56,11 +53,21 @@ export default function SearchField(props: any) {
             }
         })
         .then((response) => {
+            const location = JSON.parse(localStorage.location)
             location.push(response.data.location.name) 
             localStorage.setItem("location", JSON.stringify(location))
 
+            const country = JSON.parse(localStorage.country)
             country.push(response.data.location.country) 
             localStorage.setItem("country", JSON.stringify(country))
+
+            const localtime = JSON.parse(localStorage.localtime)
+            localtime.push(selectedDate?.get('y') === undefined ? response.data.forecast.forecastday[0].date + (selectedHour ? " - " + selectedHour + ":00" : "") : selectedDate?.get('y') + "-" + month + "-" + selectedDate?.get('D') + (selectedHour ? " - " +  selectedHour + ":00" : "")) 
+            localStorage.setItem("localtime", JSON.stringify(localtime))
+
+            const temperature = JSON.parse(localStorage.temperature)
+            temperature.push(response.data.current.temp_c) 
+            localStorage.setItem("temperature", JSON.stringify(temperature))
             return response.data;
         })
     }
@@ -86,15 +93,21 @@ export default function SearchField(props: any) {
                             size="lg"
                             required
                         />
-                        <Button type="submit" variant="plain">
-                            <Link 
-                                to={ '/search/' + searchField + (selectedDate?.get('y') === undefined ? "/days" : "/" + (selectedDate?.get('y') + "-" + month +"-" + selectedDate?.get('D')) ) + (selectedDays==="0" ? "" : '/' + selectedDays) + (selectedHour ? "/hour/" + selectedHour : "") }
-                                style={{color: 'black'}}
+                        <Link 
+                            to={ '/search/' + searchField + (selectedDate?.get('y') === undefined ? "/days" : "/" + (selectedDate?.get('y') + "-" + month +"-" + selectedDate?.get('D')) ) + (selectedDays==="0" ? "" : '/' + selectedDays) + (selectedHour ? "/hour/" + selectedHour : "") }
+                            style={{color: 'black'}}
+                            className='searchButton'
+                        > 
+                            <Button 
+                                className='searchButton' 
+                                startDecorator= {<SendIcon sx={{ verticalAlign: 'center'}} className='searchButton' />} 
+                                sx={{"&.Mui-disabled": { pointerEvents: "unset", cursor: 'not-allowed'}}} 
+                                type="submit" 
+                                variant="plain" 
+                                disabled={searchField==="" ? true : false}
                                 onClick={findByField}
-                            >
-                                <SendIcon sx={{ verticalAlign: 'center'}} />
-                            </Link>
-                        </Button>
+                            />
+                        </Link>
                     </Box>
                     <Box className="datePicker" >
                         <LocalizationProvider dateAdapter={AdapterDayjs} >
@@ -114,7 +127,7 @@ export default function SearchField(props: any) {
                             value={selectedDays}
                             onChange={onChangeDays}
                             displayEmpty
-                            required
+                            disabled={selectedDate ? true : false}
                         > 
                             <MenuItem value={0}>
                                 <em>Nº of days</em>

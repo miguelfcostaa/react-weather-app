@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <SearchField city="Funchal" />
-      <NextDaysForecast city="Funchal" />
+      <SearchField city="Funchal" country="Portugal" />
+      <NextDaysForecast city="Funchal" country="Portugal" />
     </div>
   );
 }

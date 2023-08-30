@@ -20,5 +20,7 @@ export default interface Data {
         region: string;
         country: string;
         localtime: string;
+        lat: number;
+        lon: number;
     }
 }

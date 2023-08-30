@@ -3,7 +3,6 @@ import "../../src/countries.css"
 import NavBar from './NavBar';
 import Data from '../types/Data.type';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 export default function ViewCities() {
 
@@ -65,6 +64,28 @@ export default function ViewCities() {
     }
 
 
+    function handleMoreInfo(info: any): any {
+
+        let location = JSON.parse(localStorage.location)
+        console.log(location)
+        location.push(info.location.name);
+        localStorage.setItem("location", JSON.stringify(location))
+
+        let country = JSON.parse(localStorage.country)
+        console.log(country)
+        country.push(info.location.country);
+        localStorage.setItem("country", JSON.stringify(country))
+
+        let localtime = JSON.parse(localStorage.localtime)
+        localtime.push(info.forecast.forecastday[0].date)
+        localStorage.setItem("localtime", JSON.stringify(localtime))
+
+        let temperature = JSON.parse(localStorage.temperature)
+        temperature.push(info.current.temp_c)
+        localStorage.setItem("temperature", JSON.stringify(temperature))
+
+    }
+
 
     return (
         <>
@@ -72,12 +93,9 @@ export default function ViewCities() {
             
             <img alt='' className='europeMap'/>
             <div>
-                <Link 
-                    to={'/search/' + portugalInfo?.location.country + '/days/' + 7}
-                    style={{ textDecoration: 'none'  }}
-                >
-                    <img alt='' className='portugal'/>
-                </Link>
+            
+                <a href={'/search/' + portugalInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(portugalInfo)} className='portugal'> </a>
+                
                 <span className='infoBox'>
                     <p>Country: {portugalInfo?.location.country} </p>
                     <p>Condition: {portugalInfo?.current.condition.text} </p>
@@ -86,7 +104,7 @@ export default function ViewCities() {
                 </span>
             </div>
             <div>
-                <img alt='' className='spain'></img>
+                <a href={'/search/' + spainInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(spainInfo)} className='spain'> </a>
                 <span className='infoBox'>
                     <p>Country: {spainInfo?.location.country} </p>
                     <p>Condition: {spainInfo?.current.condition.text} </p>
@@ -95,7 +113,7 @@ export default function ViewCities() {
                 </span>
             </div>
             <div>
-                <img alt='' className='france'></img>
+                <a href={'/search/' + franceInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(franceInfo)} className='france'> </a>
                 <span className='infoBox'>
                     <p>Country: {franceInfo?.location.country} </p>
                     <p>Condition: {franceInfo?.current.condition.text} </p>
@@ -104,7 +122,7 @@ export default function ViewCities() {
                 </span>
             </div>
             <div>
-                <img alt='' className='england'></img>
+                <a href={'/search/' + englandInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(englandInfo)} className='england'> </a>
                 <span className='infoBox'>
                     <p><b>Country:</b> {englandInfo?.location.country} </p>
                     <p><b>Condition:</b> {englandInfo?.current.condition.text} </p>
@@ -113,7 +131,7 @@ export default function ViewCities() {
                 </span>
             </div>
             <div>
-                <img alt='' className='germany'></img>
+                <a href={'/search/' + germanyInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(germanyInfo)} className='germany'> </a>
                 <span className='infoBox'>
                     <p>Country: <b>{germanyInfo?.location.country}</b> </p>
                     <p>Condition: <b>{germanyInfo?.current.condition.text}</b> </p>
@@ -122,7 +140,7 @@ export default function ViewCities() {
                 </span>
             </div>
             <div>
-                <img alt='' className='italy'></img>
+                <a href={'/search/' + italyInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(italyInfo)} className='italy'> </a>
                 <span className='infoBox'>
                     <p>Country: {italyInfo?.location.country} </p>
                     <p>Condition: {italyInfo?.current.condition.text} </p>
@@ -131,7 +149,7 @@ export default function ViewCities() {
                 </span>
             </div>
             <div>
-                <img alt='' className='norway'></img>
+                <a href={'/search/' + norwayInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(norwayInfo)} className='norway'> </a>
                 <span className='infoBox'>
                     <p>Country: {norwayInfo?.location.country} </p>
                     <p>Condition: {norwayInfo?.current.condition.text} </p>
@@ -140,7 +158,7 @@ export default function ViewCities() {
                 </span>
             </div>
             <div>
-                <img alt='' className='netherlands'></img>
+                <a href={'/search/' + netherlandsInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(netherlandsInfo)} className='netherlands'> </a>
                 <span className='infoBox'>
                     <p>Country: {netherlandsInfo?.location.country} </p>
                     <p>Condition: {netherlandsInfo?.current.condition.text} </p>
@@ -149,7 +167,7 @@ export default function ViewCities() {
                 </span>
             </div>
             <div>
-                <img alt='' className='belgium'></img>
+                <a href={'/search/' + belgiumInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(belgiumInfo)} className='belgium'> </a>
                 <span className='infoBox'>
                     <p>Country: {belgiumInfo?.location.country} </p>
                     <p>Condition: {belgiumInfo?.current.condition.text} </p>
@@ -158,7 +176,7 @@ export default function ViewCities() {
                 </span>
             </div>
             <div>
-                <img alt='' className='switzerland'></img>
+                <a href={'/search/' + switzerlandInfo?.location.country + '/days/' + 7} onClick={() => handleMoreInfo(switzerlandInfo)} className='switzerland'> </a>
                 <span className='infoBox'>
                     <p>Country: {switzerlandInfo?.location.country} </p>
                     <p>Condition: {switzerlandInfo?.current.condition.text} </p>

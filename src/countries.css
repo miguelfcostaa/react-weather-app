@@ -36,7 +36,7 @@
         height: 25px;
     }
 
-    .portugal:hover .portugal:focus-visible + .infoBox {
+    a.portugal:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -58,7 +58,7 @@
         height: 25px;
     }
     
-    .spain:hover + .infoBox {
+    a.spain:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -80,7 +80,7 @@
         height: 25px;
     }
     
-    .france:hover + .infoBox {
+    a.france:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -102,7 +102,7 @@
         height: 25px;
     }
     
-    .england:hover + .infoBox {
+    a.england:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -125,7 +125,7 @@
         height: 25px;
     }
 
-    .germany:hover + .infoBox {
+    a.germany:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -147,7 +147,7 @@
         height: 25px;
     }
 
-    .italy:hover + .infoBox {
+    a.italy:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -169,7 +169,7 @@
         height: 25px;
     }
     
-    .norway:hover + .infoBox {
+    a.norway:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -191,7 +191,7 @@
         height: 25px;
     }
     
-    .netherlands:hover + .infoBox {
+    a.netherlands:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -213,7 +213,7 @@
         height: 25px;
     }
     
-    .belgium:hover + .infoBox {
+    a.belgium:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -235,7 +235,7 @@
         height: 32px;
     }
     
-    .switzerland:hover + .infoBox {
+    a.switzerland:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -288,7 +288,7 @@
         height: 25px;
     }
 
-    .portugal:hover + .infoBox {
+    a.portugal:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -310,7 +310,7 @@
         height: 25px;
     }
     
-    .spain:hover + .infoBox {
+    a.spain:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -332,7 +332,7 @@
         height: 25px;
     }
 
-    .france:hover + .infoBox{
+    a.france:hover + .infoBox{
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -354,7 +354,7 @@
         height: 25px;
     }
     
-    .england:hover + .infoBox {
+    a.england:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -376,7 +376,7 @@
         height: 25px;
     }
     
-    .germany:hover + .infoBox {
+    a.germany:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -398,7 +398,7 @@
         height: 25px;
     }
 
-    .italy:hover + .infoBox {
+    a.italy:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;
@@ -420,7 +420,7 @@
         height: 25px;
     }
     
-    .norway:hover + .infoBox {
+    a.norway:hover + .infoBox {
         animation-name: transitionColor;
         animation-duration: 1s;
         animation-fill-mode: forwards;

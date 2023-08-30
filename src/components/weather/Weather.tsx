@@ -14,8 +14,6 @@ export default function ForecastWeather(props: any) {
         
     const [ weatherInfo, setWeatherInfo ] = useState<Data>();
 
-
-
     useEffect(() => {
         (async () => {
             const weatherInfo = await getWeatherInfo();
@@ -35,12 +33,34 @@ export default function ForecastWeather(props: any) {
         })
         return response.data;
     }
+    
+    function handleMoreInfo(data: any): any {
+
+        let location = JSON.parse(localStorage.location)
+        console.log(location)
+        location.push(data.location.name);
+        localStorage.setItem("location", JSON.stringify(location))
+
+        let country = JSON.parse(localStorage.country)
+        console.log(country)
+        country.push(data.location.country);
+        localStorage.setItem("country", JSON.stringify(country))
+
+        let localtime = JSON.parse(localStorage.localtime)
+        localtime.push(data.forecast.forecastday[0].date)
+        localStorage.setItem("localtime", JSON.stringify(localtime))
+
+        let temperature = JSON.parse(localStorage.temperature)
+        temperature.push(data.current.temp_c)
+        localStorage.setItem("temperature", JSON.stringify(temperature))
+
+    }
 
 
     return(
         <>
             <Card className='weatherCard' sx={{ boxShadow: 5, borderRadius: 2, }}>
-                <CardContent className='weatherCardCont'>
+                <CardContent className='weatherCardCont' onClick={() => handleMoreInfo(weatherInfo)}>
                     
                     <Typography sx={{ fontSize: 40, fontWeight: 'bold', width: 370, padding: 3 }} >
                         {weatherInfo?.location.name} 

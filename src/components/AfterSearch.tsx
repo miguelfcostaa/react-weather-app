@@ -12,7 +12,9 @@ import ThermostatIcon from '@mui/icons-material/Thermostat';
 import AirIcon from '@mui/icons-material/Air';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import Hour from '../types/Hour.type';
-
+import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 
 
 export default function AfterSearch() {
@@ -37,6 +39,7 @@ export default function AfterSearch() {
                 hour: params.hour ?? ''
             }
         })
+        
         return response.data;
     }
     
@@ -46,6 +49,27 @@ export default function AfterSearch() {
             setWeatherInfo(weatherInfo);
         })();
     });
+
+    function handleMoreInfo(weatherInfo: any ,data: any): any {
+
+        let location = JSON.parse(localStorage.location)
+        console.log(location)
+        location.push(weatherInfo.location.name);
+        localStorage.setItem("location", JSON.stringify(location))
+
+        let country = JSON.parse(localStorage.country)
+        console.log(country)
+        country.push(weatherInfo.location.country);
+        localStorage.setItem("country", JSON.stringify(country))
+
+        let localtime = JSON.parse(localStorage.localtime)
+        localtime.push(data.date)
+        localStorage.setItem("localtime", JSON.stringify(localtime))
+
+        let temperature = JSON.parse(localStorage.temperature)
+        temperature.push(data.day.avgtemp_c)
+        localStorage.setItem("temperature", JSON.stringify(temperature))
+    }
 
 
     return(
@@ -131,10 +155,11 @@ export default function AfterSearch() {
                 </div>
             </div>
 
+
             <div className='flexForecastCards'>
             {weatherInfo?.forecast?.forecastday?.map((data: Forecastday) => 
                 <Card className='forecastCard' sx={{ marginTop: 5, boxShadow: 5, borderRadius: 2, transition: 'transform 1s, width 1s, height 1s' }}>
-                        <CardContent className='forecastCardCont'>
+                        <CardContent className='forecastCardCont' onClick={() => handleMoreInfo(weatherInfo, data)}>
                             <Link 
                                 to={"/search/" + params.field + "/" + data.date} 
                                 style={{ color: 'black', textDecoration: 'none'}}
@@ -158,7 +183,26 @@ export default function AfterSearch() {
                         </CardContent>
                 </Card>
             )}
-            </div>                
+            </div>   
+
+            <div>
+            <MapContainer
+                className="full-height-map"
+                center={[38, 139.69222]}
+                zoom={6}
+                minZoom={3}
+                maxZoom={19}
+                maxBounds={[[-85.06, -180], [85.06, 180]]}
+                scrollWheelZoom={true}
+            >
+                <TileLayer
+                    attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors'
+                    url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+                />
+                {/* TODO: Add markers */}
+            </MapContainer>
+            </div>
+                            
         </>
     );
 }

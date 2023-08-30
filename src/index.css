@@ -17,6 +17,11 @@ code {
     monospace;
 }
 
+iframe {
+    display: none;
+}
+
+
 
 
 
@@ -211,7 +216,11 @@ code {
     text-align: right;
   }
 
-  
+  .full-height-map {
+    margin: 200px;
+    height: 600px;
+    width: 1500px;
+  }
 
 }
 
