@@ -180,6 +180,71 @@
         cursor: pointer
     }
 
+    .netherlands {
+        background-repeat: no-repeat;
+        background-image: url(../assets/netherlands-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 340px;
+        left: 810px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .netherlands:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .netherlands:hover {
+        cursor: pointer
+    }
+
+    .belgium {
+        background-repeat: no-repeat;
+        background-image: url(../assets/belgium-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 290px;
+        left: 800px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .belgium:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .belgium:hover {
+        cursor: pointer
+    }
+
+    .switzerland {
+        background-repeat: no-repeat;
+        background-image: url(../assets/switzerland-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 222px;
+        left: 854px;
+        width: 34px;
+        height: 32px;
+    }
+    
+    .switzerland:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .switzerland:hover {
+        cursor: pointer
+    }
 
 }
 
@@ -204,6 +269,7 @@
 
     .infoBox {
         border-radius: 10px;
+        max-width: 220px;
         padding: 15px;
         position: absolute;
         bottom: 240px;
@@ -318,6 +384,50 @@
     }
 
     .germany:hover {
+        cursor: pointer
+    }
+
+    .italy {
+        background-repeat: no-repeat;
+        background-image: url(../assets/italy-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 215px;
+        left: 450px;
+        width: 40px;
+        height: 25px;
+    }
+
+    .italy:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .italy:hover {
+        cursor: pointer
+    }
+
+    .norway {
+        background-repeat: no-repeat;
+        background-image: url(../assets/norway-flag-xs.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 500px;
+        left: 410px;
+        width: 40px;
+        height: 25px;
+    }
+    
+    .norway:hover + .infoBox {
+        animation-name: transitionColor;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 70%;
+    }
+
+    .norway:hover {
         cursor: pointer
     }
 

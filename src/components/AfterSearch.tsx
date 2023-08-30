@@ -13,14 +13,16 @@ import AirIcon from '@mui/icons-material/Air';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import Hour from '../types/Hour.type';
 
+
+
 export default function AfterSearch() {
 
     let params = useParams();
 
-    console.log("field",params.field);
-    console.log("date",params.date);
-    console.log("hour",params.hour);
-    console.log("days",params.ndays);
+    // console.log("field",params.field);
+    // console.log("date",params.date);
+    // console.log("hour",params.hour);
+    // console.log("days",params.ndays);
 
 
     const [weatherInfo, setWeatherInfo] = useState<Data>();

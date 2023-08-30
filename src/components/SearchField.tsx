@@ -86,12 +86,13 @@ export default function SearchField(props: any) {
                             size="lg"
                             required
                         />
-                        <Button type="submit" variant="plain" onSubmit={findByField}>
+                        <Button type="submit" variant="plain">
                             <Link 
                                 to={ '/search/' + searchField + (selectedDate?.get('y') === undefined ? "/days" : "/" + (selectedDate?.get('y') + "-" + month +"-" + selectedDate?.get('D')) ) + (selectedDays==="0" ? "" : '/' + selectedDays) + (selectedHour ? "/hour/" + selectedHour : "") }
                                 style={{color: 'black'}}
+                                onClick={findByField}
                             >
-                                <SendIcon sx={{ verticalAlign: 'center'}}/>
+                                <SendIcon sx={{ verticalAlign: 'center'}} />
                             </Link>
                         </Button>
                     </Box>

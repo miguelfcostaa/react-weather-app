@@ -12,10 +12,10 @@ import AirIcon from '@mui/icons-material/Air';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import Hour from '../../types/Hour.type';
 
+
 export default function OnlyDateWeather() {
 
     let params = useParams();
-
 
     const [weatherInfo, setWeatherInfo] = useState<Data>();
 
@@ -65,7 +65,7 @@ export default function OnlyDateWeather() {
                             {weatherInfo?.forecast.forecastday[0].day.condition.text}
                         </Typography>
 
-                        <Typography sx={{ fontSize: 24, width: 220, paddingLeft: 2, paddingBottom: 4 }}>
+                        <Typography className="humidity" sx={{ fontSize: 24, width: 220, paddingLeft: 2 }}>
                             <WaterDropIcon sx={{ verticalAlign: 'middle'}}/> {weatherInfo?.forecast.forecastday[0].day.daily_chance_of_rain} %
                         </Typography>
 

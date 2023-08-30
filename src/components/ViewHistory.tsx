@@ -13,8 +13,6 @@ export default function ViewHistory() {
         (async () => {
             setLocation(JSON.parse(localStorage.getItem("location") || '{}'));
             setCountry(JSON.parse(localStorage.getItem("country") || '{}'));
-            console.log(country)
-            console.log(location)
         })();
     })  
     
@@ -29,17 +27,16 @@ export default function ViewHistory() {
                 </Link>
             );
         }    
-        // console.log(list)
         return list;
     }
 
     return (
         <>
             <NavBar />
-            <Box className="whiteBoxHistory">
+            <Box className="whiteBoxHistory" sx={{maxWidth: '1250px' }}>
                 <h1 style={{ padding: 25 }}>History</h1>
                 <hr></hr>
-                <ul style={{fontSize: 22, paddingLeft: '4rem'}}> 
+                <ul style={{fontSize: 22, paddingLeft: '4rem', overflow: 'auto', maxHeight: '720px' }}> 
                     {renderHistory()}
                 </ul>
             </Box>

@@ -9,11 +9,20 @@ import { Link } from 'react-router-dom';
 
 
 
-
 export default function NextDaysForecast(props: any) {
 
+    
+
     const handleMoreInfo = () => {
-        
+        let location = JSON.parse(localStorage.location)
+        console.log(location)
+        // location = JSON.parse(localStorage.getItem("location") || '[]')
+        // console.log("before",location)
+        // location.push(response.data.location.name) 
+        // localStorage.setItem("location", JSON.stringify(location))
+        // console.log("after",location)
+        // location.push(response.data.location.name) 
+        // localStorage.setItem("location", JSON.stringify(location))
     }
 
     const [weatherInfo, setWeatherInfo] = useState<Data>();
@@ -48,6 +57,7 @@ export default function NextDaysForecast(props: any) {
                                 to={"/search/" + props.city + "/" + data.date} 
                                 style={{ color: 'black', textDecoration: 'none'}}
                             >
+                                
                                 <Typography sx={{ fontSize: 18, width: 180, textAlign: 'center', paddingRight: 2 }}>
                                     {data.date}
                                 </Typography>

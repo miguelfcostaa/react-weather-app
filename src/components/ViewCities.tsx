@@ -4,7 +4,6 @@ import NavBar from './NavBar';
 import Data from '../types/Data.type';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { hover } from '@testing-library/user-event/dist/hover';
 
 export default function ViewCities() {
 
@@ -15,7 +14,9 @@ export default function ViewCities() {
     const [ germanyInfo, setGermanyInfo ] = useState<Data>();
     const [ italyInfo, setItalyInfo ] = useState<Data>();
     const [ norwayInfo, setNorwayInfo ] = useState<Data>();
-
+    const [ netherlandsInfo, setNetherlandsInfo ] = useState<Data>();
+    const [ belgiumInfo, setBelgiumInfo ] = useState<Data>();
+    const [ switzerlandInfo, setSwitzerlandInfo ] = useState<Data>();
 
     useEffect(() => {
         (async () => {
@@ -39,7 +40,15 @@ export default function ViewCities() {
             
             const norwayInfo = await getInfo("Norway");
             setNorwayInfo(norwayInfo);
-                  
+             
+            const netherlandsInfo = await getInfo("Netherlands");
+            setNetherlandsInfo(netherlandsInfo);
+            
+            const belgiumInfo = await getInfo("Belgium");
+            setBelgiumInfo(belgiumInfo);
+
+            const switzerlandInfo = await getInfo("Switzerland");
+            setSwitzerlandInfo(switzerlandInfo);
         })();
     });
 
@@ -106,9 +115,9 @@ export default function ViewCities() {
             <div>
                 <img alt='' className='germany'></img>
                 <span className='infoBox'>
-                    <p>Country: {germanyInfo?.location.country} </p>
-                    <p>Condition: {germanyInfo?.current.condition.text} </p>
-                    Temperature: {germanyInfo?.current.temp_c}ºC
+                    <p>Country: <b>{germanyInfo?.location.country}</b> </p>
+                    <p>Condition: <b>{germanyInfo?.current.condition.text}</b> </p>
+                    Temperature: <b>{germanyInfo?.current.temp_c}ºC</b>
                 
                 </span>
             </div>
@@ -127,6 +136,33 @@ export default function ViewCities() {
                     <p>Country: {norwayInfo?.location.country} </p>
                     <p>Condition: {norwayInfo?.current.condition.text} </p>
                     Temperature: {norwayInfo?.current.temp_c}ºC
+                
+                </span>
+            </div>
+            <div>
+                <img alt='' className='netherlands'></img>
+                <span className='infoBox'>
+                    <p>Country: {netherlandsInfo?.location.country} </p>
+                    <p>Condition: {netherlandsInfo?.current.condition.text} </p>
+                    Temperature: {netherlandsInfo?.current.temp_c}ºC
+                
+                </span>
+            </div>
+            <div>
+                <img alt='' className='belgium'></img>
+                <span className='infoBox'>
+                    <p>Country: {belgiumInfo?.location.country} </p>
+                    <p>Condition: {belgiumInfo?.current.condition.text} </p>
+                    Temperature: {belgiumInfo?.current.temp_c}ºC
+                
+                </span>
+            </div>
+            <div>
+                <img alt='' className='switzerland'></img>
+                <span className='infoBox'>
+                    <p>Country: {switzerlandInfo?.location.country} </p>
+                    <p>Condition: {switzerlandInfo?.current.condition.text} </p>
+                    Temperature: {switzerlandInfo?.current.temp_c}ºC
                 
                 </span>
             </div>
