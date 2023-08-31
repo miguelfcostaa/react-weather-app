@@ -11,7 +11,13 @@ import ThermostatIcon from '@mui/icons-material/Thermostat';
 import AirIcon from '@mui/icons-material/Air';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import Hour from '../../types/Hour.type';
+import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
+import { icon } from "leaflet"
 
+const ICON = icon({
+  iconUrl: "/marker_map_icon.png",
+  iconSize: [48, 48],
+})
 
 export default function OnlyDateWeather() {
 
@@ -121,6 +127,30 @@ export default function OnlyDateWeather() {
                     </CardContent>
                 </Card>
         </div>
+        <div className='flexMap'>
+            {weatherInfo && (
+                <MapContainer
+                className="full-height-map"
+                center={[Number(weatherInfo?.location.lat),Number(weatherInfo?.location.lon)]}
+                zoom={9}
+                minZoom={3}
+                maxZoom={19}
+                maxBounds={[[-85.06, -180], [85.06, 180]]}
+                scrollWheelZoom={true}
+            >
+                <TileLayer
+                    attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors'
+                    url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+                />
+                <Marker position={[Number(weatherInfo?.location.lat),Number(weatherInfo?.location.lon)]} icon={ICON} >
+                    <Popup>
+                        A pretty CSS3 popup. <br /> Easily customizable.
+                    </Popup>
+                </Marker>
+            </MapContainer>
+            )}    
+            
+            </div>
               
     </>
     );
