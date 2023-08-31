@@ -96,10 +96,8 @@ export default function SearchField(props: any) {
                         <Link 
                             to={ '/search/' + searchField + (selectedDate?.get('y') === undefined ? "/days" : "/" + (selectedDate?.get('y') + "-" + month +"-" + selectedDate?.get('D')) ) + (selectedDays==="0" ? "" : '/' + selectedDays) + (selectedHour ? "/hour/" + selectedHour : "") }
                             style={{color: 'black'}}
-                            className='searchButton'
                         > 
                             <Button 
-                                className='searchButton' 
                                 startDecorator= {<SendIcon sx={{ verticalAlign: 'center'}} className='searchButton' />} 
                                 sx={{"&.Mui-disabled": { pointerEvents: "unset", cursor: 'not-allowed'}}} 
                                 type="submit" 
@@ -116,14 +114,15 @@ export default function SearchField(props: any) {
                                 value={selectedDate}
                                 onChange={(newValue) => setSelectedDate(newValue)}
                                 sx={{background: 'white', borderColor: '2'}}     
-                                                 
+                                disabled={selectedDays!="0" ? true : false}                 
                             />
                         </LocalizationProvider>
                     </Box>
 
                     <FormControl className="selectDays">
                         <Select 
-                            sx={{background: 'white'}}
+                            className='disabledSelect'
+                            sx={{ "&.Mui-disabled": { pointerEvents: 'unset', cursor: 'not-allowed'}}}
                             value={selectedDays}
                             onChange={onChangeDays}
                             displayEmpty

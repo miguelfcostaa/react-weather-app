@@ -21,7 +21,10 @@ iframe {
     display: none;
 }
 
-
+.disabledSelect.Mui-disabled {
+  cursor: unset;
+  cursor: not-allowed !important;
+}
 
 
 

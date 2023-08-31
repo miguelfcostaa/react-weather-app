@@ -13,9 +13,14 @@ import AirIcon from '@mui/icons-material/Air';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import Hour from '../types/Hour.type';
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
+import { Icon } from 'leaflet';
+import { ArrowDropDownIcon } from '@mui/x-date-pickers';
+import { icon } from "leaflet"
 
+const ICON = icon({
+  iconUrl: "/marker_map_icon.png",
+  iconSize: [48, 48],
+})
 
 export default function AfterSearch() {
 
@@ -39,7 +44,6 @@ export default function AfterSearch() {
                 hour: params.hour ?? ''
             }
         })
-        
         return response.data;
     }
     
@@ -69,6 +73,10 @@ export default function AfterSearch() {
         let temperature = JSON.parse(localStorage.temperature)
         temperature.push(data.day.avgtemp_c)
         localStorage.setItem("temperature", JSON.stringify(temperature))
+    }
+
+    const position: any = (data: any) => {
+        return [data?.location?.lat,data?.location?.lon]
     }
 
 
@@ -188,8 +196,8 @@ export default function AfterSearch() {
             <div>
             <MapContainer
                 className="full-height-map"
-                center={[38, 139.69222]}
-                zoom={6}
+                center={[32.65,-16.91]}
+                zoom={9}
                 minZoom={3}
                 maxZoom={19}
                 maxBounds={[[-85.06, -180], [85.06, 180]]}
@@ -199,7 +207,11 @@ export default function AfterSearch() {
                     attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors'
                     url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
                 />
-                {/* TODO: Add markers */}
+                <Marker position={position(weatherInfo)} icon={ICON} >
+                    <Popup>
+                        A pretty CSS3 popup. <br /> Easily customizable.
+                    </Popup>
+                </Marker>
             </MapContainer>
             </div>
                             
