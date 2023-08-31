@@ -13,8 +13,6 @@ import AirIcon from '@mui/icons-material/Air';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import Hour from '../types/Hour.type';
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
-import { Icon } from 'leaflet';
-import { ArrowDropDownIcon } from '@mui/x-date-pickers';
 import { icon } from "leaflet"
 
 const ICON = icon({
@@ -75,17 +73,13 @@ export default function AfterSearch() {
         localStorage.setItem("temperature", JSON.stringify(temperature))
     }
 
-    const position: any = (data: any) => {
-        return [data?.location?.lat,data?.location?.lon]
-    }
 
 
     return(
         <>
             <NavBar />
 
-            <div className='row' style={{ marginRight: 0 }}>
-                <div className='col-4'>
+            <div className='flexSearchAndCurrent'>
                     <Card className='afterSearchCurrentDay' sx={{ boxShadow: 5, borderRadius: 2}}>
                         <CardContent className='afterSearchCurrentDayCont'>
 
@@ -121,8 +115,7 @@ export default function AfterSearch() {
                             
                         </CardContent>
                     </Card>
-                </div>
-                <div className='col-8'>
+
                 <Card className="hourForecast" sx={{ fontSize: 16, boxShadow: 5, borderRadius: 2 }}>
                     <CardContent className='hourForecastCont'>
                         {weatherInfo?.forecast?.forecastday[0].hour.map((data: Hour) => 
@@ -160,10 +153,7 @@ export default function AfterSearch() {
                         )}     
                     </CardContent>
                 </Card>
-                </div>
             </div>
-
-
             <div className='flexForecastCards'>
             {weatherInfo?.forecast?.forecastday?.map((data: Forecastday) => 
                 <Card className='forecastCard' sx={{ marginTop: 5, boxShadow: 5, borderRadius: 2, transition: 'transform 1s, width 1s, height 1s' }}>
@@ -191,12 +181,14 @@ export default function AfterSearch() {
                         </CardContent>
                 </Card>
             )}
-            </div>   
+            </div>
+               
 
-            <div>
-            <MapContainer
+            <div className='flexMap'>
+            {weatherInfo && (
+                <MapContainer
                 className="full-height-map"
-                center={[32.65,-16.91]}
+                center={[Number(weatherInfo?.location.lat),Number(weatherInfo?.location.lon)]}
                 zoom={9}
                 minZoom={3}
                 maxZoom={19}
@@ -207,12 +199,14 @@ export default function AfterSearch() {
                     attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors'
                     url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
                 />
-                <Marker position={position(weatherInfo)} icon={ICON} >
+                <Marker position={[Number(weatherInfo?.location.lat),Number(weatherInfo?.location.lon)]} icon={ICON} >
                     <Popup>
                         A pretty CSS3 popup. <br /> Easily customizable.
                     </Popup>
                 </Marker>
             </MapContainer>
+            )}    
+            
             </div>
                             
         </>

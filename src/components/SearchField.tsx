@@ -74,13 +74,13 @@ export default function SearchField(props: any) {
 
     return (
     <>  
-        <Box className="whitebox"  sx={{ boxShadow: 5, borderRadius: 2 }}>  </Box>
+        
 
         <form onSubmit={(event) => {
             event.preventDefault();
         }}>
-            <div className='row' style={{ marginRight: 0 }} >
-                <div className='col-6'>
+            <div className='flexSearchAndCurrent'>
+                <div className='flexSearchBox'>
                     <Box sx={{ boxShadow: 5, borderRadius: 2 }} className='searchBox'>
                         <Input 
                             type='text'
@@ -107,81 +107,82 @@ export default function SearchField(props: any) {
                             />
                         </Link>
                     </Box>
-                    <Box className="datePicker" >
-                        <LocalizationProvider dateAdapter={AdapterDayjs} >
-                            <DatePicker
-                                format='YYYY-MM-DD'
-                                value={selectedDate}
-                                onChange={(newValue) => setSelectedDate(newValue)}
-                                sx={{background: 'white', borderColor: '2'}}     
-                                disabled={selectedDays!="0" ? true : false}                 
-                            />
-                        </LocalizationProvider>
-                    </Box>
+                    <Box className="whitebox"  sx={{ boxShadow: 5, borderRadius: 2 }}>  
+                        <Box className="datePicker" >
+                            <LocalizationProvider dateAdapter={AdapterDayjs} >
+                                <DatePicker
+                                    format='YYYY-MM-DD'
+                                    value={selectedDate}
+                                    onChange={(newValue) => setSelectedDate(newValue)}
+                                    sx={{background: 'white', borderColor: '2'}}     
+                                    disabled={selectedDays!=="0" ? true : false}                 
+                                />
+                            </LocalizationProvider>
+                        </Box>
 
-                    <FormControl className="selectDays">
-                        <Select 
-                            className='disabledSelect'
-                            sx={{ "&.Mui-disabled": { pointerEvents: 'unset', cursor: 'not-allowed'}}}
-                            value={selectedDays}
-                            onChange={onChangeDays}
-                            displayEmpty
-                            disabled={selectedDate ? true : false}
-                        > 
-                            <MenuItem value={0}>
-                                <em>Nº of days</em>
-                            </MenuItem>
-                            <MenuItem value={1}>One</MenuItem>
-                            <MenuItem value={2}>Two</MenuItem>
-                            <MenuItem value={3}>Three</MenuItem>
-                            <MenuItem value={4}>Four</MenuItem>
-                            <MenuItem value={5}>Five</MenuItem>
-                            <MenuItem value={6}>Six</MenuItem>
-                            <MenuItem value={7}>Seven</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <FormControl className="selectHour" >
-                        <Select 
-                            sx={{background: 'white'}}
-                            value={selectedHour}
-                            onChange={onChangeHour}
-                            displayEmpty
-                        > 
-                            <MenuItem value="">
-                                <em>Select Hour</em>
-                            </MenuItem>
-                            <MenuItem value={0}>00:00</MenuItem>
-                            <MenuItem value={1}>01:00</MenuItem>
-                            <MenuItem value={2}>02:00</MenuItem>
-                            <MenuItem value={3}>03:00</MenuItem>
-                            <MenuItem value={4}>04:00</MenuItem>
-                            <MenuItem value={5}>05:00</MenuItem>
-                            <MenuItem value={6}>06:00</MenuItem>
-                            <MenuItem value={7}>07:00</MenuItem>
-                            <MenuItem value={8}>08:00</MenuItem>
-                            <MenuItem value={9}>09:00</MenuItem>
-                            <MenuItem value={10}>10:00</MenuItem>
-                            <MenuItem value={11}>11:00</MenuItem>
-                            <MenuItem value={12}>12:00</MenuItem>
-                            <MenuItem value={13}>13:00</MenuItem>
-                            <MenuItem value={14}>14:00</MenuItem>
-                            <MenuItem value={15}>15:00</MenuItem>
-                            <MenuItem value={16}>16:00</MenuItem>
-                            <MenuItem value={17}>17:00</MenuItem>
-                            <MenuItem value={18}>18:00</MenuItem>
-                            <MenuItem value={19}>19:00</MenuItem>
-                            <MenuItem value={20}>20:00</MenuItem>
-                            <MenuItem value={21}>21:00</MenuItem>
-                            <MenuItem value={22}>22:00</MenuItem>
-                            <MenuItem value={23}>23:00</MenuItem>
-                        </Select>
-                    </FormControl>
+                        <FormControl className="selectDays" sx={{ cursor: 'not-allowed' }}>
+                            <Select 
+                                className='disabledSelect'  
+                                value={selectedDays}
+                                onChange={onChangeDays}
+                                displayEmpty
+                                disabled={selectedDate ? true : false}
+                            > 
+                                <MenuItem value={0}>
+                                    <em>Nº of days</em>
+                                </MenuItem>
+                                <MenuItem value={1}>One</MenuItem>
+                                <MenuItem value={2}>Two</MenuItem>
+                                <MenuItem value={3}>Three</MenuItem>
+                                <MenuItem value={4}>Four</MenuItem>
+                                <MenuItem value={5}>Five</MenuItem>
+                                <MenuItem value={6}>Six</MenuItem>
+                                <MenuItem value={7}>Seven</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <FormControl className="selectHour" >
+                            <Select 
+                                sx={{background: 'white'}}
+                                value={selectedHour}
+                                onChange={onChangeHour}
+                                displayEmpty
+                            > 
+                                <MenuItem value="">
+                                    <em>Select Hour</em>
+                                </MenuItem>
+                                <MenuItem value={0}>00:00</MenuItem>
+                                <MenuItem value={1}>01:00</MenuItem>
+                                <MenuItem value={2}>02:00</MenuItem>
+                                <MenuItem value={3}>03:00</MenuItem>
+                                <MenuItem value={4}>04:00</MenuItem>
+                                <MenuItem value={5}>05:00</MenuItem>
+                                <MenuItem value={6}>06:00</MenuItem>
+                                <MenuItem value={7}>07:00</MenuItem>
+                                <MenuItem value={8}>08:00</MenuItem>
+                                <MenuItem value={9}>09:00</MenuItem>
+                                <MenuItem value={10}>10:00</MenuItem>
+                                <MenuItem value={11}>11:00</MenuItem>
+                                <MenuItem value={12}>12:00</MenuItem>
+                                <MenuItem value={13}>13:00</MenuItem>
+                                <MenuItem value={14}>14:00</MenuItem>
+                                <MenuItem value={15}>15:00</MenuItem>
+                                <MenuItem value={16}>16:00</MenuItem>
+                                <MenuItem value={17}>17:00</MenuItem>
+                                <MenuItem value={18}>18:00</MenuItem>
+                                <MenuItem value={19}>19:00</MenuItem>
+                                <MenuItem value={20}>20:00</MenuItem>
+                                <MenuItem value={21}>21:00</MenuItem>
+                                <MenuItem value={22}>22:00</MenuItem>
+                                <MenuItem value={23}>23:00</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
                 </div>
-                <div className='col-6'>
-                    <Weather city="Funchal" />
-                </div>
+                    
+                <Weather city="Funchal" />
+            </div> 
+            
                 
-            </div>     
         </form>
     </>
     );

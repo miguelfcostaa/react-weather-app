@@ -44,8 +44,7 @@ export default function OnlyDateWeather() {
     <>
         <NavBar />
         
-        <div className='row' style={{ marginRight: 0 }}>
-            <div className='col-4'>
+        <div className='flexSearchAndCurrent' >
                 <Card className='afterSearchCurrentDayOnly' sx={{ boxShadow: 5, borderRadius: 2}}>
                     <CardContent className='afterSearchCurrentDayCont'>
 
@@ -84,8 +83,6 @@ export default function OnlyDateWeather() {
                         
                     </CardContent>
                 </Card>
-            </div>
-            <div className='col-8'>
                 <Card className="onlyHourForecast" sx={{ fontSize: 16, boxShadow: 5, borderRadius: 2}}>
                     <CardContent className='onlyHourForecastCont' >
                         {weatherInfo?.forecast?.forecastday[0].hour.map((data: Hour) => 
@@ -123,7 +120,6 @@ export default function OnlyDateWeather() {
                         )}     
                     </CardContent>
                 </Card>
-            </div>
         </div>
               
     </>

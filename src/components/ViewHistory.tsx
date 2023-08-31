@@ -38,10 +38,10 @@ export default function ViewHistory() {
     return (
         <>
             <NavBar />
-            <Box className="whiteBoxHistory" sx={{maxWidth: '1250px' }}>
-                <h1 style={{ padding: 25 }}>History</h1>
+            <Box className="whiteBoxHistory" sx={{ }}>
+                <p><h1 style={{ paddingLeft: 25, paddingTop: 25 }}>History</h1></p>
                 <hr></hr>
-                <ul style={{fontSize: 22, paddingLeft: '4rem', overflow: 'auto', maxHeight: '720px' }}> 
+                <ul style={{fontSize: 22, paddingLeft: '4rem', overflow: 'auto', maxHeight: '730px' }}> 
                     {renderHistory()}
                 </ul>
             </Box>

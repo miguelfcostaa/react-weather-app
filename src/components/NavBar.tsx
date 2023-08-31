@@ -27,9 +27,6 @@ export default function NavBar() {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'white' }}>
                           Weather App
                         </Typography> 
-
-                        {/* <BottomNavigationAction label="Home" icon={<CloudIcon  sx={{color: primary}} />} /> */}
-                        
                         <Button>
                           <Link to={"/"} style={{ color: 'white', fontSize: 20, textTransform: 'capitalize', textDecoration: 'none', padding: 8 }}>
                             Home

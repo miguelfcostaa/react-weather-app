@@ -1,19 +1,19 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(#98c1d9, #e0fbfc);
-  /* background-image: url(../assets/image-bg.png);  */
-  background-repeat: no-repeat;
-  background-size: 200% 200%;
-  min-height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: linear-gradient(#98c1d9, #e0fbfc);
+    /* background-image: url(../assets/image-bg.png);  */
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    min-height: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
@@ -21,17 +21,17 @@ iframe {
     display: none;
 }
 
-.disabledSelect.Mui-disabled {
-  cursor: unset;
-  cursor: not-allowed !important;
+.MuiInputBase-root .disabledSelect.Mui-disabled:hover {
+    pointer-events: unset;
+    cursor: not-allowed !important;
 }
 
 
 
-@media only screen and (min-width: 800px) {
 
 
-  .searchField {
+
+.searchField {
     width: 600px;
     height: 40px;
     border: 0;
@@ -40,49 +40,56 @@ iframe {
     padding: 2px;
     padding-left: 10px;
     margin-left: 4px;
-  }
+}
 
-  .searchBox {
+.searchBox {
     display: flex;
+    flex-flow: row wrap;
     align-items: center;
-    width: 620px;
     height: 60px;
     padding: 5px;
     background-color: white;
     margin-top: 100px;
-    margin-left: 284px;
+    margin-right: 30px;
   }
 
   .navBar {
-    padding-left: 260px;
-    padding-right: 260px;
+    padding-left: 300px;
+    padding-right: 300px;
   }
 
 
-  .weatherCard {
+.weatherCard {
     width: 600px;
     margin-top: 100px;
-    margin-left: 66px;
     margin-bottom: 45px;
-  }
+}
 
-  .weatherCardCont {
+.weatherCardCont {
     display: flex;
     flex-flow: row wrap;
-  }
+}
 
-  .forecastCard {
+.flexSearchAndCurrent {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.forecastCard {
     margin: 2px;
     width: 190px;
     height: 400px;
-  }
+}
 
-  @keyframes transitionColor {
+@keyframes transitionColor {
     from {background-color: white;}
     to {background-color: #f8f87c}
-  }
+}
 
-  .forecastCard:hover, .forecastCard:focus-visible{
+.forecastCard:hover, .forecastCard:focus-visible{
     width: 220px;
     height: 420px;
     transform: translateY(-1.5rem);
@@ -90,320 +97,113 @@ iframe {
     animation-duration: 1s;
     animation-fill-mode: forwards;
     cursor: pointer;
-  }
+}
 
-  .forecastCardCont {
+.forecastCardCont {
     display: flex;
     flex-flow: row wrap;
+}
 
-  }
-
-  .flexForecastCards {
+.flexForecastCards {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     max-height: 400px;
-    max-width: 1400px;
-    margin-left: 279px;
-  }
+    margin-left: 30px;
+    margin-right: 30px;
+}
 
-  .forecastImages {
+.forecastImages {
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 15px;
     margin-left: 10px;
-  }
+}
 
 
-  .afterSearchCurrentDay {
+.afterSearchCurrentDay {
     width: 500px;
     height: 400px;
     margin-top: 100px;
-    margin-left: 284px;
-    
-  }
+    margin-right: 60px;
+}
 
-  .afterSearchCurrentDayCont {
+.afterSearchCurrentDayCont {
     display: flex;
     flex-flow: row wrap;
-  }
+}
 
-  .hourForecast {
+.hourForecast {
     width: 770px;
     margin-top: 100px;
-    margin-left: 215px;
-  }
+}
 
 
-  .hourForecastCont {
+.hourForecastCont {
     display: flex;
     flex-flow: row wrap;
     max-height: 400px;
-    max-width: 770px;
     overflow: auto;
     
-  }
+}
 
-  .afterSearchCurrentDayOnly {
+.afterSearchCurrentDayOnly {
     width: 500px;
+    height: fit-content;
     margin-top: 120px;
-    margin-left: 284px;
-  }
+    margin-right: 60px;
+}
 
-  .onlyHourForecast {
+.onlyHourForecast {
     width: 770px;
     margin-top: 120px;
-    margin-left: 215px;
-  }
+}
 
-  .onlyHourForecastCont {
+.onlyHourForecastCont {
     max-height: 600px;
     overflow: auto;
-  }
+}
 
-  .whitebox {
-    position: absolute;
-    width: 620px;
+.whitebox {
+    padding: 15px;
+    padding-top: 20px;
+    gap: 25px;
+    display: flex;
+    flex: row wrap;
+    text-align: center;
+    margin-top: 10px;
+    margin-right: 30px;
     height: 95px;
-    top: 170px;
-    left: 284px;
     background: white;
     border-radius: 10px;
-  }
+}
 
-  .datePicker {
-    position: absolute;
-    top: 190px;
-    left: 295px;
-  }
 
-  .selectDays {
-    position: absolute;
-    top: 30px;
-    left: 580px;
-    margin: 1px;
-    width: 130px;
-    min-width: 120px;
-  }
-
-  .selectHour {
-    position: absolute;
-    top: 30px;
-    left: 610px;
-    width: 140px;
-    min-width: 200px;
-  }
-
-  .titleDate {
-    margin-top: 100px; 
-    margin-left: 284px;    
-    color: white;
-    padding: 10px;
-  }
-
-  .whiteBoxHistory {
-    width: 1350px;
-    height: 865px;
+.whiteBoxHistory {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 845px;
     background: white;
-    margin-left: 280px;
-    margin-right: 280px;
-    margin-top: 80px;
+    margin-top: 100px;
     margin-bottom: 15px;
     border-radius: 10px;
-  }
+}
 
-  .humidity {
+.humidity {
     padding-bottom: 4px;
-  }
+}
 
-  .locationAndTemp {
+.locationAndTemp {
     text-align: right;
-  }
+}
 
-  .full-height-map {
+.full-height-map {
+    display: flex;
     margin: 200px;
     height: 600px;
-    width: 1500px;
-  }
-
 }
 
-@media only screen and (max-width: 800px) {
-  .whiteBoxHistory {
-    background: white;
-    margin: 15px;
-    margin-top: 70px;
-    height: 865px;
-    border-radius: 10px;
-  }
 
-  .searchField {
-    width: 250px;
-    height: 40px;
-    border: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.3rem;
-    padding: 2px;
-    padding-left: 10px;
-    margin-left: 4px;
-  }
-
-  .searchField:focus {
-    outline-color: white;
-  }
-
-  .searchBox {
-    display: flex;
-    align-items: center;
-    width: 300px;
-    height: 60px;
-    padding: 5px;
-    background-color: white;
-    margin-top: 90px;
-    margin-left: 30px;
-  }
-
-  .weatherCard {
-    width: 250px;
-    margin-top: 90px;
-    margin-left: 30px;
-    margin-bottom: 30px;
-  }
-
-  .weatherCardCont {
-    display: flex;
-    flex-flow: row wrap;
-  }
-
-  .whitebox {
-    position: absolute;
-    width: 300px;
-    height: 250px;
-    top: 170px;
-    left: 30px;
-    background: white;
-    border-radius: 10px;
-  }
-
-  .datePicker {
-    position: absolute;
-    top: 190px;
-    left: 50px;
-  }
-
-  .selectDays {
-    position: absolute;
-    top: 114px;
-    left: 50px;
-    margin: 1px;
-    width: 130px;
-    min-width: 120px;
-  }
-
-  .selectHour {
-    position: absolute;
-    top: 188px;
-    left: -80px;
-    width: 140px;
-    min-width: 200px;
-  }
-
-  .forecastCard {
-    margin: 2px;
-    width: 210px;
-    height: 400px;
-  }
-
-  @keyframes transitionColor {
-    from {background-color: white;}
-    to {background-color: #f8f87c}
-  }
-
-  .forecastCard:hover, .forecastCard:focus-visible{
-    width: 220px;
-    height: 420px;
-    transform: translateY(-1.5rem);
-    animation-name: transitionColor;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    cursor: pointer;
-  }
-
-  .forecastCardCont {
-    display: flex;
-    flex-flow: row wrap;
-
-  }
-
-  .flexForecastCards {
-    display: flex;
-    flex-flow: row wrap;
-    max-height: 400px;
-    max-width: 1400px;
-    margin-left: 30px;
-    margin-right: 20px;
-  }
-
-  .forecastImages {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px;
-    margin-left: 10px;
-  }
-
-  .afterSearchCurrentDay {
-    width: 200px;
-    height: 650px;
-    margin-top: 90px;
-    margin-left: 30px;
-  }
-
-  .afterSearchCurrentDayCont {
-    display: flex;
-    flex-flow: row wrap;
-  }
-
-  .hourForecast {
-    width: fit-content;
-    height: 650px;
-    margin-top: 90px; 
-    margin-right: 30px;
-  }
-
-  .hourForecastCont {
-    max-height: 650px;
-    overflow: auto;
-  }
-
-  .titleDate {
-    margin-top: 90px; 
-    margin-left: 30px;    
-    color: white;
-    padding: 10px;
-
-  }
-
-  .afterSearchCurrentDayOnly {
-    width: 220px;
-    height: 700px;
-    margin-top: 100px;
-    margin-left: 30px;
-  }
-
-  .onlyHourForecast {
-    width: fit-content;
-    margin-top: 100px; 
-    margin-right: 30px;
-  }
-
-  .onlyHourForecastCont {
-    max-height: 700px;
-    overflow: auto;
-  }
-
-  .btnMoreInfo {
-    margin-left: 21px !important;
-    margin-top: 21px !important;
-  }
-
-}
-  
